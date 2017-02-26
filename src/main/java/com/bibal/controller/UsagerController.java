@@ -33,7 +33,7 @@ public class UsagerController {
 	
 	@RequestMapping(value="/searchUsagerByName",method=RequestMethod.GET)
 	public String searchUsagerByName(@RequestParam("nom")String nom,Model model){
-		List<Usager> usagers = usagerService.searchUsagerByName(nom);
+		List<Usager> usagers = usagerService.searchByName(nom);
 		model.addAttribute("usagers", usagers);
 		return "ListeUsagers";
 	}

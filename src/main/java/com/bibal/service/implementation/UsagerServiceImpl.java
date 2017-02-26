@@ -17,40 +17,40 @@ import com.bibal.util.EtatUsager;
 public class UsagerServiceImpl implements UsagerService {
 
 	@Autowired
-	private UsagerRepository iUsagerRepository;
+	private UsagerRepository usagerRepository;
 	
 	@Override
 	public void addUsager(String nom, String prenom, String mail, String tel) {
 		Usager usager = new Usager(nom, prenom, mail, tel);
-		iUsagerRepository.save(usager);
+		usagerRepository.save(usager);
 	}
 
 	@Override
-	public List<Usager> allUsagers() {
-		return iUsagerRepository.findAll();
+public List<Usager> findAll() {
+		return usagerRepository.findAll();
 	}
 
 	@Override
-	public Usager getUsagerById(Long idUsager) {
-		return iUsagerRepository.findOne(idUsager);
+	public Usager getById(Long idUsager) {
+		return usagerRepository.findOne(idUsager);
 	}
 
 	@Override
-	public List<Usager> searchUsagerByName(String nom) {	
-		return iUsagerRepository.searchUsagersByName(nom);
+	public List<Usager> searchByName(String nom) {	
+		return usagerRepository.searchUsagersByName(nom);
 	}
 
 
 	@Override
 	public Usager disable(Long idUsager) {
-		Usager usager = getUsagerById(idUsager);
+		Usager usager = getById(idUsager);
 		usager.setEtat(EtatUsager.Desactive);
 		return usager;
 	}
 
 	@Override
 	public Usager suspendre(Long idUsager) {
-		Usager usager = getUsagerById(idUsager);
+		Usager usager = getById(idUsager);
 		usager.setEtat(EtatUsager.Suspendu);
 		return usager;
 	}
@@ -58,7 +58,7 @@ public class UsagerServiceImpl implements UsagerService {
 
 	@Override
 	public Usager updatePhoto(Long idUsager, String photo) {
-		Usager usager = getUsagerById(idUsager);
+		Usager usager = getById(idUsager);
 		usager.setPhoto(photo);
 		return usager;
 	}
@@ -66,14 +66,14 @@ public class UsagerServiceImpl implements UsagerService {
 	
 	@Override
 	public Usager enAttenteDeCotisation(Long idUsager) {
-		Usager usager = getUsagerById(idUsager);
+		Usager usager = getById(idUsager);
 		usager.setEtat(EtatUsager.EnAttenteDeContisation);
 		return usager;
 	}
 
 	@Override
 	public Usager update(Long idUsager, String nom, String prenom, String tel, String mail) {
-		Usager usager = getUsagerById(idUsager);
+		Usager usager = getById(idUsager);
 		usager.setNom(nom);
 		usager.setPrenom(prenom);
 		usager.setTel(tel);

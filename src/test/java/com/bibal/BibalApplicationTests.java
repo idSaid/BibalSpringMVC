@@ -1,18 +1,26 @@
 package com.bibal;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import static org.junit.Assert.assertEquals;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+import org.junit.Test;
+
+import com.bibal.util.PropertiesManager;
+
 public class BibalApplicationTests {
 
+	
 	@Test
-	public void contextLoads() {
-		
+	public void testLoadProperties() {
+		assertEquals(15, PropertiesManager.getDelai("delaiLivre"));
+		assertEquals(10, PropertiesManager.getDelai("delaiMagazine"));
 	}
 	
-
+	@Test
+	public void testSetProperties() {
+		PropertiesManager.setDelai("delaiLivre", 20);
+		PropertiesManager.setDelai("delaiMagazine", 17);
+		assertEquals(20, PropertiesManager.getDelai("delaiLivre"));
+		assertEquals(17, PropertiesManager.getDelai("delaiMagazine"));
+	}
+	
 }

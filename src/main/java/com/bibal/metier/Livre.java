@@ -2,7 +2,7 @@ package com.bibal.metier;
 
 import javax.persistence.Entity;
 
-import com.bibal.util.PropertiesLoad;
+import com.bibal.util.PropertiesManager;
 
 @Entity
 public class Livre extends Oeuvre {
@@ -16,12 +16,12 @@ public class Livre extends Oeuvre {
 
 	public Livre() {
 		super();
-		this.delaiRetour = PropertiesLoad.getDelai("delaiLivre");
+		this.delaiRetour = PropertiesManager.getDelai("delaiLivre");
 	}
 
 	public Livre(String nom, String thematique, String ecrivain) {
 		super(nom, thematique, ecrivain);
-		this.delaiRetour = PropertiesLoad.getDelai("delaiLivre");
+		this.delaiRetour = PropertiesManager.getDelai("delaiLivre");
 	}
 	
 }
