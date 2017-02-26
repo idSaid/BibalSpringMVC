@@ -3,13 +3,14 @@ package com.bibal.metier;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+
+import com.bibal.util.EtatUsager;
 
 @Entity
 public class Usager implements Serializable{
@@ -25,8 +26,10 @@ public class Usager implements Serializable{
 	private String nom;
 	private String prenom;
 	private String photo;
+	private String adresse;
 	private String mail;
 	private String tel;
+	private EtatUsager etat;
 	
 	@OneToMany
 	@JoinColumn(name="idUsager",referencedColumnName="idUsager")
@@ -38,16 +41,33 @@ public class Usager implements Serializable{
 	
 	public Usager() {
 		super();
+		etat = EtatUsager.Client;
 	}
+	
+	public Usager(String nom, String prenom) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;	
+		etat = EtatUsager.Client;
+	}
+	
 	public Usager(String nom, String prenom, String mail, String tel) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.mail = mail;
 		this.tel = tel;
+		etat = EtatUsager.Client;
+	}	
+
+	public EtatUsager getEtat() {
+		return etat;
 	}
 
-	
+	public void setEtat(EtatUsager etat) {
+		this.etat = etat;
+	}
+
 	public Long getIdUsager() {
 		return idUsager;
 	}
@@ -90,6 +110,22 @@ public class Usager implements Serializable{
 
 	public void setTel(String tel) {
 		this.tel = tel;
-	};
+	}
+	
+	public List<Emprunt> getListEmprunts() {
+		return listEmprunts;
+	}
+	
+	public List<Reservation> getListReservations() {
+		return listReservations;
+	}
+	
+	public String getAdresse() {
+		return adresse;
+	}
+	
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
 	
 }
