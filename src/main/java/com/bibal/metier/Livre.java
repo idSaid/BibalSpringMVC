@@ -24,6 +24,4 @@ public class Livre extends Oeuvre {
 		this.delaiRetour = PropertiesLoad.getDelai("delaiLivre");
 	}
 	
-	
-	
 }
