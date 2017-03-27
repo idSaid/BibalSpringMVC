@@ -1,32 +1,68 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
- 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
- 	  
- 	<head>
-		<meta charset="utf-8" />	
-  		<title>template</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
-		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
-	</head>
-	<body>		
-		<header>
-			<div class="navbar navbar-default">
-				<div class="container-fluid">
-					<ul class="nav navbar-nav">
-						<li><a th:href="@{/index}">Home</a></li>
-						<li><a th:href="@{/searchUsager}">Usagers</a></li>
-						<li><a th:href="@{/EmpruntsEtResas}">Emprunts et Resa</a></li>
-						<li><a th:href="@{/Oeuvres}">Oeuvres</a></li>
-					</ul>
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>template</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap/css/bootstrap.min.css}"
+	href="/css/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	th:href="@{https://fonts.googleapis.com/css?family=Cookie}"
+	href="https://fonts.googleapis.com/css?family=Cookie" />
+<link rel="stylesheet" th:href="@{/css/myCss.css}" href="/css/myCss.css" />
+</head>
+
+<body>
+	<header>
+		<img class="img-responsive" th:src="@{/images/library-header.jpg}" />
+		<nav class="navbar navbar-default custom-header">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#navbar-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand navbar-link" th:href="@{/index}"> Bibal</a>
+				</div>
+				<div class="collapse navbar-collapse" id="navbar-collapse">
+					<div class="collapse navbar-collapse" id="navbar-collapse">
+						<ul class="nav navbar-nav navbar-right links">
+							<li role="presentation">
+								<a href="index" th:href="@{/index}"><span class="glyphicon glyphicon-home"></span><strong> Accueil</strong></a>								
+							</li>													
+							<li role="presentation">
+								<a href="ListeUsagers" th:href="@{/ListeUsagers}"><span class="glyphicon glyphicon-user"></span><strong> Usagers</strong></a>
+							</li>
+							<li role="presentation">
+								<a href="#"><span class="glyphicon glyphicon-book"></span><strong> Livres</strong></a>
+							</li>
+							<li role="presentation">
+								<a href="#"><span class="glyphicon glyphicon-file"></span><strong> Magazines</strong></a>							
+							</li>
+							<li role="presentation">
+								<a href="#"><span class="glyphicon glyphicon-education"></span><strong> Emprunts et réservations</strong></a>
+							</li>							
+						</ul>
+						<ul class="nav navbar-nav navbar-right"></ul>
+					</div>
 				</div>
 			</div>
-		</header>
-		<section layout:fragment="content"></section>
-		<footer>
-			<div class="navbar-fixed-bottom">
-			Copyright 2017
-			</div>
-		</footer>
-	</body>
+		</nav>
+	</header>
+	<section layout:fragment="custom-content">
+        <p>Your page content goes here</p>
+    </section>
+	<footer>
+		<div>
+			<p>@Authors: Mohammed Anas Bahnini &amp; Said Idrissi - Université de Lorraine - ISGA Rabat - 2017</p>
+		</div>
+	</footer>
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
 </html>
-	
