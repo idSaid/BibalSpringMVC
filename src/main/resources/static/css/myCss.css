@@ -224,3 +224,32 @@ div.social-links{
 }
 
 ul.nav a:hover { color: #fff !important; }
+
+a:link{text-decoration:none}
+.bon {
+  background-color: green;
+  color: #FFFFFF;
+}
+.abime {
+  background-color: orange;
+  color: #FFFFFF;
+}
+.vieux {
+  background-color: red;
+  color: #FFFFFF;
+}
+.disponible {
+  background-color: green;
+  color: #FFFFFF;
+}
+.emprunte {
+  background-color: orange;
+  color: #FFFFFF;
+}
+.reserve {
+  background-color: red;
+  color: #FFFFFF;
+}
+body{
+  background-color: #8f9296;
+}
