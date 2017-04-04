@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+<head>
+<meta charset="UTF-8" />
+<title>Livres</title>
+</head>
+<body>
+	<section layout:fragment="custom-content" style="min-height : 240 ">
+		<div class="col-md-6">
+			<div class="panel panel-inverse">
+				<div class="panel-heading" style="text-align: center">
+					Lister par :
+				</div>
+				<div class="panel-body">
+					<form action="#" method="post">
+						<div class="form-group">
+							<div class="form-group">
+								<div class="col-sm-18">
+									<div class="form-group">
+										<select class="form-control">
+											<option>Tous</option>
+											<option>Auteurs</option>
+											<option>Thématiques</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-inverse">Lister</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-18">
+			<div class="panel panel-inverse">
+				<div class="panel-heading" style="text-align: center">
+					Gestion des Livres
+				</div>
+				<div class="panel-body">
+					<form action="#" method="get">
+						<div class="col-sm-8">
+							<div class="form-group">
+								<div class="input-group">
+									<input type="text" placeholder="Nom Livre" name="s"
+										class="form-control left-rounded"/>
+									<div class="input-group-btn">
+										<button type="submit" class="btn btn-inverse right-rounded">Chercher</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+
+					<form action="#" method="get">
+						<button type="button" style="float: right;"
+							class="btn btn-lg btn-inverse left-rounded" data-toggle="modal" data-target="#add">
+							<span class="icon icon-plus-square-o"></span> 
+							Nouveau Livre
+						</button>
+					</form>
+
+					<table class="table">
+						<thead>
+							<tr>
+								<th style="text-align: center">Nom</th>
+								<th style="text-align: center">Thématique</th>
+								<th style="text-align: center">Auteur</th>
+								<th style="text-align: center">Nombre d'exemplaire</th>
+								<th style="text-align: center">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td style="text-align: center">JAVA</td>
+								<td style="text-align: center">Developpement</td>
+								<td style="text-align: center">Abouabdilah</td>
+								<td style="text-align: center"><a href="exemplaires.html">2</a></td>
+								<td style="text-align: center">
+									<button type="button" class="btn btn-inverse"
+										data-toggle="modal" data-target="#update">
+										<i class="icon icon-edit"></i>
+									</button>
+									<button type="button" class="btn btn-inverse">
+										<i class="icon icon-trash-o"></i>
+									</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="modal fade" id="add" role="dialog" style="display: none;" aria-hidden="true">
+						<div class="modal-dialog">
+
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title" style="text-align: center">Ajouter
+										nouveau Livre</h4>
+								</div>
+								<div class="modal-body">
+									<form action="#" method="post">
+										<div class="form-group">
+											<div class="form-group">
+												<label class="control-label">Nom</label> <input name="nom"
+													type="text" class="form-control" /> <span class="has-error"></span>
+											</div>
+											<div class="form-group">
+												<label class="control-label">Thématique</label> <input
+													name="thematique" type="text" class="form-control" />
+												<!--<select class="form-control" name="thematique">
+                                                <option>...</option>
+                                                <option>test1</option>
+                                                <option>test2</option>
+                                            </select>-->
+												<span class="has-error"></span>
+											</div>
+											<div class="form-group">
+												<label class="control-label">Auteur</label> <input
+													name="auteur" type="text" class="form-control" /> <span
+													class="has-error"></span>
+											</div>
+											<div class="form-group">
+												<button type="submit" class="btn btn-inverse">
+													<i class="icon icon-check"></i> Ajouter
+												</button>
+												<button type="submit" class="btn btn-inverse">
+													<i class="icon icon-times"></i> Fermer
+												</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="modal fade" id="update" role="dialog">
+						<div class="modal-dialog">
+
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title" style="text-align: center">Modifier
+										Le Livre numéro : 125</h4>
+								</div>
+								<div class="modal-body">
+									<form action="#" method="post">
+										<div class="form-group">
+											<div class="form-group">
+												<label class="control-label">Nom</label> <input name="nom"
+													type="text" class="form-control" /> <span class="has-error"></span>
+											</div>
+											<div class="form-group">
+												<label class="control-label">Thématique</label> <input
+													name="thematique" type="text" class="form-control" />
+												<!--<select class="form-control" name="thematique">
+                                                <option>...</option>
+                                                <option>test1</option>
+                                                <option>test2</option>
+                                            </select>-->
+												<span class="has-error"></span>
+											</div>
+											<div class="form-group">
+												<label class="control-label">Auteur</label> <input
+													name="auteur" type="text" class="form-control" /> <span
+													class="has-error"></span>
+											</div>
+											<div class="form-group">
+												<button type="submit" class="btn btn-inverse">
+													<i class="icon icon-edit"></i> Modifier
+												</button>
+												<button type="submit" class="btn btn-inverse">
+													<i class="icon icon-times"></i> Fermer
+												</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
