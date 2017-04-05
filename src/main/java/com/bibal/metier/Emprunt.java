@@ -39,4 +39,49 @@ public class Emprunt {
 		this.date=new Date();
 	}
 
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public Date getDateRetourEffective() {
+		return dateRetourEffective;
+	}
+
+	public void setDateRetourEffective(Date dateRetourEffective) {
+		this.dateRetourEffective = dateRetourEffective;
+	}
+
+	public EtatExemplaire getEtatExemplaire() {
+		return etatExemplaire;
+	}
+
+	public void setEtatExemplaire(EtatExemplaire etatExemplaire) {
+		this.etatExemplaire = etatExemplaire;
+	}
+
+	public Usager getUsager() {
+		return usager;
+	}
+
+	public void setUsager(Usager usager) {
+		this.usager = usager;
+	}
+
+	public Exemplaire getExemplaire() {
+		return exemplaire;
+	}
+
+	public void setExemplaire(Exemplaire exemplaire) {
+		this.exemplaire = exemplaire;
+	}
+
+	public Long getIdEmprunt() {
+		return idEmprunt;
+	}
+
+
 }

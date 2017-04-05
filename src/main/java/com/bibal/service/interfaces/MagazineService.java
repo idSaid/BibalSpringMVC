@@ -12,6 +12,6 @@ public interface MagazineService {
 	public List<Magazine> searchByName(String nom);
 	public List<Magazine> searchByAuthor(String author);
 	public List<Magazine> searchByThematique(String thematique);
-	public Magazine update(Long id, String nom, String thematique, String ecrivain);
+	public Magazine update(Long id, String nom);
 	
 }

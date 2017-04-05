@@ -34,11 +34,9 @@ public class MagazineServiceImpl implements MagazineService {
 	}
 
 	@Override
-	public Magazine update(Long id, String nom, String thematique, String ecrivain) {
+	public Magazine update(Long id, String nom) {
 		Magazine magazine = getById(id);
 		magazine.setNom(nom);
-		magazine.setEcrivain(ecrivain);
-		magazine.setThematique(thematique);
 		return magazine;
 	}
 
