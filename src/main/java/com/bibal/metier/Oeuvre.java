@@ -25,8 +25,7 @@ public abstract class Oeuvre implements Serializable{
 	@GeneratedValue(strategy=GenerationType.TABLE)
 	private Long idOeuvre;
 	private String nom;
-	private String thematique;
-	private String ecrivain;
+	
 	
 	@OneToMany
 	@JoinColumn(name="idOeuvre", referencedColumnName="idOeuvre")
@@ -40,13 +39,18 @@ public abstract class Oeuvre implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Oeuvre(String nom, String thematique, String ecrivain) {
+	public Oeuvre(String nom) {
 		super();
 		this.nom = nom;
-		this.thematique = thematique;
-		this.ecrivain = ecrivain;
+		
 	}
 	
+	public Oeuvre(Long idOeuvre, String nom) {
+		super();
+		this.idOeuvre = idOeuvre;
+		this.nom = nom;
+	}
+
 	public Long getIdOeuvre() {
 		return idOeuvre;
 	}
@@ -59,21 +63,16 @@ public abstract class Oeuvre implements Serializable{
 		this.nom = nom;
 	}
 
-	public String getThematique() {
-		return thematique;
+	public List<Reservation> getListeReservations() {
+		return listeReservations;
 	}
 
-	public void setThematique(String thematique) {
-		this.thematique = thematique;
+	public List<Exemplaire> getListeExemplaires() {
+		return listeExemplaires;
 	}
 
-	public String getEcrivain() {
-		return ecrivain;
+	public void setListeExemplaires(List<Exemplaire> listeExemplaires) {
+		this.listeExemplaires = listeExemplaires;
 	}
-
-	public void setEcrivain(String ecrivain) {
-		this.ecrivain = ecrivain;
-	}
-	
 	
 }

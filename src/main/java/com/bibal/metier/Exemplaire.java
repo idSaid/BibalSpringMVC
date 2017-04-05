@@ -31,6 +31,31 @@ public class Exemplaire {
 	public Exemplaire() {
 		this.etatExemplaire=EtatExemplaire.Bonne;
 	}
+
+	public EtatExemplaire getEtatExemplaire() {
+		return etatExemplaire;
+	}
+
+	public void setEtatExemplaire(EtatExemplaire etatExemplaire) {
+		this.etatExemplaire = etatExemplaire;
+	}
+
+	public Oeuvre getOeuvre() {
+		return oeuvre;
+	}
+
+	public void setOeuvre(Oeuvre oeuvre) {
+		this.oeuvre = oeuvre;
+	}
+
+	public Long getIdExemplaire() {
+		return idExemplaire;
+	}
+
+	public List<Emprunt> getListEmprunts() {
+		return listEmprunts;
+	}
+	
 	
 	
 }
