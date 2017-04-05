@@ -27,30 +27,23 @@ public class Magazine extends Oeuvre {
 		this.delaiRetour=PropertiesManager.getDelai("delaiMagazine");
 	}
 		
-	public Magazine(String nom, int delaiRetour, ThemeMagazine theme, String titre, Date dateSortie, boolean horsSerie) {
+	public Magazine(String nom, ThemeMagazine theme, String titre, Date dateSortie, boolean horsSerie) {
 		super(nom);
-		this.delaiRetour = delaiRetour;
+		this.delaiRetour = PropertiesManager.getDelai("delaiMagazine");
 		this.theme = theme;
 		this.titre = titre;
 		this.dateSortie = dateSortie;
 		this.horsSerie = horsSerie;
 	}
 
-	public Magazine(String nom, int delaiRetour, ThemeMagazine theme, String titre, Date dateSortie, boolean horsSerie, int numeroDeSerie) {
+	public Magazine(String nom, ThemeMagazine theme, String titre, Date dateSortie, boolean horsSerie, int numeroDeSerie) {
 		super(nom);
-		this.delaiRetour = delaiRetour;
+		this.delaiRetour = PropertiesManager.getDelai("delaiMagazine");
 		this.theme = theme;
 		this.titre = titre;
 		this.dateSortie = dateSortie;
 		this.horsSerie = horsSerie;
 		this.numeroDeSerie = numeroDeSerie;
-	}
-
-
-
-	public Magazine(String nom, String thematique, String ecrivain) {
-		super(nom);
-		this.delaiRetour=PropertiesManager.getDelai("delaiMagazine");
 	}
 
 	public ThemeMagazine getTheme() {
