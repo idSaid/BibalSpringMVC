@@ -2,71 +2,122 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="template">
+
+
 <head>
 <meta charset="UTF-8" />
 <title>Livres</title>
+
+<script th:src="@{/js/jquery.js}" src="/js/jquery.js"></script>
+<link rel="stylesheet" type="text/css"
+	th:href="@{//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css}"
+	href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" />
+<script
+	th:src="@{//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js}"
+	src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js">
+	
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#datatable').dataTable();
+	});
+</script>
+
 </head>
 <body>
-	<section layout:fragment="custom-content" style="min-height : 240 ">
-		
-		<div class="col-md-18">
+	<section layout:fragment="custom-content" style="min-height: 240">
+		<div class="col-md-24">
 			<div class="panel panel-inverse">
-				<div class="panel-heading" style="text-align: center">
-					Gestion des Livres
-				</div>
+				<div class="panel-heading" style="text-align: center">Gestion
+					des Livres</div>
 				<div class="panel-body">
-					<form action="#" method="get">
-						<div class="col-sm-8">
-							<div class="form-group">
-								<div class="input-group">
-									<input type="text" placeholder="Nom Livre" name="s"
-										class="form-control left-rounded"/>
-									<div class="input-group-btn">
-										<button type="submit" class="btn btn-inverse right-rounded">Chercher</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</form>
 
-					<form action="#" method="get">					
+					<form action="#" method="get">
 						<button type="button" style="float: right;"
-							class="btn btn-lg btn-inverse left-rounded" data-toggle="modal" data-target="#add">
-							<span class="glyphicon glyphicon-plus"></span> 
-							Nouveau Livre
+							class="btn btn-lg btn-success left-rounded" data-toggle="modal"
+							data-target="#add">
+							<span class="glyphicon glyphicon-plus"></span> Nouveau Livre
 						</button>
 					</form>
 
-					<table class="table">
+					<div id="livreDataTable" class="col-sm-23">
+					<table id="datatable" class="table table-striped table-bordered dataTable"
+									cellspacing="0">
 						<thead>
-							<tr>
-								<th style="text-align: center">Nom</th>
-								<th style="text-align: center">Thématique</th>
-								<th style="text-align: center">Auteur</th>
-								<th style="text-align: center">Nombre d'exemplaire</th>
-								<th style="text-align: center">Action</th>
+							<tr role="row">
+								<th class="sorting_asc" tabindex="0" aria-controls="myDataTable"
+									rowspan="1" colspan="1" style="text-align: center;"
+									aria-sort="ascending"
+									aria-label="Name: activate to sort column descending">Nom</th>
+								<th class="sorting" tabindex="0" aria-controls="myDataTable"
+									rowspan="1" colspan="1" style="text-align: center;"
+									aria-label="Position: activate to sort column ascending">Thématique</th>
+								<th class="sorting" tabindex="0" aria-controls="myDataTable"
+									rowspan="1" colspan="1" style="text-align: center;"
+									aria-label="Office: activate to sort column ascending">Auteur</th>
+								<th class="sorting" tabindex="0" aria-controls="myDataTable"
+									rowspan="1" colspan="1" style="text-align: center;"
+									aria-label="Age: activate to sort column ascending">Nombre
+									d'exemplaire</th>
+								<th class="sorting" tabindex="0" aria-controls="myDataTable"
+									rowspan="1" colspan="1" style="text-align: center;"
+									aria-label="Start date: activate to sort column ascending">Action</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
+							<tr class="odd" role="row">
 								<td style="text-align: center">JAVA</td>
 								<td style="text-align: center">Developpement</td>
 								<td style="text-align: center">Abouabdilah</td>
-								<td style="text-align: center"><a th:href="@{/Exemplaires}" href="Exemplaires">2</a></td>
+								<td style="text-align: center"><a th:href="@{/Exemplaires}"
+									href="Exemplaires">2</a></td>
 								<td style="text-align: center">
-									<button type="button" class="btn btn-inverse"
+									<button type="button" class="btn btn-warning"
 										data-toggle="modal" data-target="#update">
 										<span class="glyphicon glyphicon-edit"></span>
 									</button>
-									<button type="button" class="btn btn-inverse">
+									<button type="button" class="btn btn-danger">
+										<span class="glyphicon glyphicon-trash"></span>
+									</button>
+								</td>
+							</tr>
+							<tr class="odd" role="row">
+								<td style="text-align: center">JAVA2</td>
+								<td style="text-align: center">Developpement</td>
+								<td style="text-align: center">Abouabdilah</td>
+								<td style="text-align: center"><a th:href="@{/Exemplaires}"
+									href="Exemplaires">2</a></td>
+								<td style="text-align: center">
+									<button type="button" class="btn btn-warning"
+										data-toggle="modal" data-target="#update">
+										<span class="glyphicon glyphicon-edit"></span>
+									</button>
+									<button type="button" class="btn btn-danger">
+										<span class="glyphicon glyphicon-trash"></span>
+									</button>
+								</td>
+							</tr>
+							<tr class="odd" role="row">
+								<td style="text-align: center">JAVA3</td>
+								<td style="text-align: center">Developpement</td>
+								<td style="text-align: center">Abouabdilah</td>
+								<td style="text-align: center"><a th:href="@{/Exemplaires}"
+									href="Exemplaires">2</a></td>
+								<td style="text-align: center">
+									<button type="button" class="btn btn-warning"
+										data-toggle="modal" data-target="#update">
+										<span class="glyphicon glyphicon-edit"></span>
+									</button>
+									<button type="button" class="btn btn-danger">
 										<span class="glyphicon glyphicon-trash"></span>
 									</button>
 								</td>
 							</tr>
 						</tbody>
 					</table>
-
-					<div class="modal fade" id="add" role="dialog" style="display: none;" aria-hidden="true">
+					<div class="modal fade" id="add" role="dialog"
+						style="display: none;" aria-hidden="true">
 						<div class="modal-dialog">
 
 							<!-- Modal content-->
@@ -80,9 +131,9 @@
 									<form action="#" method="post">
 										<div class="form-group">
 											<div class="form-group">
-												<label class="control-label">Nom</label> 
-													<input name="nom" type="text" class="form-control" /> 
-													<span class="has-error"></span>
+												<label class="control-label">Nom</label> <input name="nom"
+													type="text" class="form-control" /> <span
+													class="has-error"></span>
 											</div>
 											<div class="form-group">
 												<label class="control-label">Thématique</label> <input
@@ -129,7 +180,8 @@
 										<div class="form-group">
 											<div class="form-group">
 												<label class="control-label">Nom</label> <input name="nom"
-													type="text" class="form-control" /> <span class="has-error"></span>
+													type="text" class="form-control" /> <span
+													class="has-error"></span>
 											</div>
 											<div class="form-group">
 												<label class="control-label">Thématique</label> <input
@@ -158,7 +210,7 @@
 									</form>
 								</div>
 							</div>
-
+						</div>
 						</div>
 					</div>
 				</div>
@@ -166,4 +218,5 @@
 		</div>
 	</section>
 </body>
+
 </html>
