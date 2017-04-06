@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+<head>
+<meta charset="UTF-8"/>
+<title>Liste des usagers</title>
+</head>
+<body>
+	<section layout:fragment="custom-content">
+	<div id="main">
+		<div layout:fragment="content">
+			<div class="col-md-6">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							Ajout d'un usager
+						</div>
+						<div class="panel-body">
+							<form th:action="@{/addUsager}" method="post">
+								<div class="form-group">
+									<div class="form-group">
+								        <label class="control-label">Prenom</label>
+								        <input name="prenom" type="text" class="form-control" id="prenom"/>
+								    </div>
+									<div class="form-group">
+								        <label class="control-label">Nom</label>
+								        <input name="nom" type="text" class="form-control" id="nom"/>
+								    </div>				
+									<div class="form-group">
+								        <label class="control-label">Adresse email</label>
+								        <input name="mail" type="email" class="form-control" id="email"/>
+								        <span class="help">Format: nom@fournisseur.pays</span>
+								    </div>
+								    <div class="form-group">
+								        <label class="control-label">Telephone</label>
+								        <input name="tel" type="text" class="form-control" id="tel"/>
+								        <span class="help">Format: +212 ***********</span>
+								    </div>
+								    <div class="form-group">
+										<button type="submit" class="btn btn-primary"><i class="icon icon-check icon-lg"></i>Ajouter</button>
+									</div>								
+								</div>
+							</form>
+						</div>
+					</div>
+			</div>
+			<div class="col-md-6">			
+				<div class="panel panel-primary">
+					<div class="panel-heading">usager</div>
+					<div class="panel-body">
+						<form th:action="@{/searchUsagerByName}" method="get">
+							<div class="form-group">
+								<div class="form-group">
+									<label class="control-label">Prenom</label> <input name="nom"
+										type="text" class="form-control" id="nom" />								
+								</div>
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary">
+										<i class="icon icon-search"></i>Search
+									</button>
+								</div>
+							</div>
+						</form>
+						<table class="table" th:if="${usagers} != null">
+							<caption class="text-center">Result</caption>
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Nom</th>
+									<th>Prenom</th>
+									<th>Mail</th>
+									<th>tel</th>
+						<!-- 			<th>Nb Emprunts</th>
+									<th>Nb Resas</th> -->
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="u:${usagers}">
+									<th th:text="${u.idUsager}"></th>
+									<th th:text="${u.nom}"></th>
+									<th th:text="${u.prenom}"></th>
+									<th th:text="${u.mail}"></th>
+									<th th:text="${u.tel}"></th>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+</body>
+</html>
