@@ -32,4 +32,8 @@ public class TemplateController {
 		return "Livres";
 	}
 	
+	@RequestMapping("/Magazines")
+	public String Magazines(){
+		return "Magazines";
+	}
 }
