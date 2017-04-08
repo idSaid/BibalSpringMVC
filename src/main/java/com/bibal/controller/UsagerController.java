@@ -39,6 +39,13 @@ public class UsagerController {
 //	public String ListeUsagers(){
 //		return "ListeUsagers";
 //	}
+	
+	@RequestMapping("/ListeUsagers")
+	public String ListeUsagers(Model model){
+		List<Usager> usagers= usagerService.findAll();
+		model.addAttribute("allUsagers",usagers);
+		return "ListeUsagers";
+	}
 
 	@RequestMapping("/addUsager")
 	public String ajouterUsager(@RequestParam("prenom")String prenom, @RequestParam("nom")String nom,
@@ -57,6 +64,13 @@ public class UsagerController {
 	@RequestMapping("/searchUsager")
 	public String SearchUsager(Model model){
 		model.addAttribute("usagers", null);
+		return "ListeUsagers";
+	}
+	
+	@RequestMapping("/allUsagers")
+	public String allUsagers(Model model){
+		List<Usager> usagers= usagerService.findAll();
+		model.addAttribute("allUsagers",usagers);
 		return "ListeUsagers";
 	}
 

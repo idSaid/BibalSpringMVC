@@ -107,7 +107,7 @@
 									<td style="text-align: center">Dec-2013</td>
 									<td style="text-align: center">Histoire</td>
 									<td style="text-align: center"><a
-										th:href="@{/Exemplaires}" href="Exemplaires">2</a></td>
+										th:href="@{/DetailMagazine}" href="DetailMagazine">2</a></td>
 									<td style="text-align: center">
 										<button type="button" class="btn btn-warning"
 											data-toggle="modal" data-target="#update">
@@ -125,7 +125,7 @@
 									<td style="text-align: center">Dec-2013</td>
 									<td style="text-align: center">Histoire</td>
 									<td style="text-align: center"><a
-										th:href="@{/Exemplaires}" href="Exemplaires">2</a></td>
+										th:href="@{/DetailMagazine}" href="DetailMagazine">2</a></td>
 									<td style="text-align: center">
 										<button type="button" class="btn btn-warning"
 											data-toggle="modal" data-target="#update">
@@ -143,7 +143,7 @@
 									<td style="text-align: center">Dec-2013</td>
 									<td style="text-align: center">Histoire</td>
 									<td style="text-align: center"><a
-										th:href="@{/Exemplaires}" href="Exemplaires">2</a></td>
+										th:href="@{/DetailMagazine}" href="DetailMagazine">2</a></td>
 									<td style="text-align: center">
 										<button type="button" class="btn btn-warning"
 											data-toggle="modal" data-target="#update">
@@ -231,28 +231,40 @@
 										<form action="#" method="post">
 											<div class="form-group">
 												<div class="form-group">
-													<label class="control-label">Nom</label> <input name="nom"
-														type="text" class="form-control" /> <span
+													<label class="control-label">Magazine</label> <input
+														name="nom" type="text" class="form-control" /> <span
 														class="has-error"></span>
 												</div>
 												<div class="form-group">
-													<label class="control-label">Thématique</label> <input
-														name="thematique" type="text" class="form-control" />
-													<!--<select class="form-control" name="thematique">
-                                                <option>...</option>
-                                                <option>test1</option>
-                                                <option>test2</option>
-                                            </select>-->
+													<label class="control-label">Titre</label> <input
+														name="titre" type="text" class="form-control" /> <span
+														class="has-error"></span>
+												</div>
+												<div class="form-group">
+													<label class="control-label">N° de série</label><input
+														name="numeroDeSerie" type="text" class="form-control" />
 													<span class="has-error"></span>
 												</div>
 												<div class="form-group">
-													<label class="control-label">Auteur</label> <input
-														name="auteur" type="text" class="form-control" /> <span
-														class="has-error"></span>
+													<label class="control-label">Date de sortie</label>
+													<div class="input-group date" data-provide="datepicker" id="date" data-date-format="dd/mm/yyyy">
+														<input type="text" class="form-control" /> <span
+															class="input-group-addon"> <span
+															class="glyphicon glyphicon-calendar"></span>
+														</span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label">Thème</label> <select
+														class="form-control" name="theme">
+														<option>theme1</option>
+														<option>test1</option>
+														<option>test2</option>
+													</select> <span class="has-error"></span>
 												</div>
 												<div class="form-group">
 													<button type="submit" class="btn btn-warning">
-														<span class="glyphicon glyphicon-edit"></span> Modifier
+														<span class="glyphicon glyphicon-ok"></span> Modifier
 													</button>
 													<button type="submit" class="btn btn-secondary">
 														Annuler</button>
