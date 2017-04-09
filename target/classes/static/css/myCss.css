@@ -227,30 +227,22 @@ div.social-links{
 ul.nav a:hover { color: #fff !important; }
 
 a:link{text-decoration:none}
-.bon {
-  background-color: green;
-  color: #FFFFFF;
+.bon { 
+  color: green;
 }
 .abime {
-  background-color: orange;
-  color: #FFFFFF;
+  color: red;
 }
 .vieux {
-  background-color: red;
-  color: #FFFFFF;
+  color: red;
 }
 .disponible {
-  background-color: green;
-  color: #FFFFFF;
+  color: green;
 }
 .emprunte {
-  background-color: orange;
-  color: #FFFFFF;
+  color: red;
 }
-.reserve {
-  background-color: red;
-  color: #FFFFFF;
-}
+
 body{
   height: 100%;
   background-color: #dcddde;
@@ -285,4 +277,53 @@ body{
 #magazineDataTable{
 	padding-top: 30px;
 	padding-left: 1%;	
+}
+
+#livreInfo{
+	padding-top: 50px;
+	padding-left: 9%;	
+}
+
+#ExemplaireLivreInfo{
+	padding-top: 50px;
+	padding-left: 4%;	
+}
+
+#Precedent{
+	position:absolute;
+	left:9%;
+}
+
+#exemplairedatatableDiv{
+	padding-top: 20px;
+}
+
+#addExemplaire{
+	width: 800px;
+	top: 20%;
+	margin-left: 25%;
+}
+
+#updateExemplaire{
+	width: 800px;
+	top: 20%;
+	margin-left: 25%;
+}
+
+#rendreModalHeader{
+	font-weight:bold;
+	color:white;
+	background-color: #92c882;	
+}
+
+#rendre{
+	width: 900px;
+	top: 15%;
+	margin-left: 22%;
+}
+
+#update{
+	width: 900px;
+	top: 15%;
+	margin-left: 22%;
 }

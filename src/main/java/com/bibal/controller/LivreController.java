@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @ComponentScan
 public class LivreController {
 
-	@RequestMapping("/Exemplaires")
-	public String Exemplaires(){
-		return "Exemplaires";
+	@RequestMapping("/Livres")
+	public String Livre(){
+		return "Livres";
 	}
+	
+	
 }

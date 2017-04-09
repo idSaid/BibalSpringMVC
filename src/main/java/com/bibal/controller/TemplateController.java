@@ -22,18 +22,5 @@ public class TemplateController {
 		return "index";
 	}
 	
-	@RequestMapping("/ListeUsagers")
-	public String ListeUsagers(){
-		return "ListeUsagers";
-	}
 	
-	@RequestMapping("/Livres")
-	public String Livre(){
-		return "Livres";
-	}
-	
-	@RequestMapping("/Magazines")
-	public String Magazines(){
-		return "Magazines";
-	}
 }
