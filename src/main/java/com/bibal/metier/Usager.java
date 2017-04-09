@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,12 +26,12 @@ public class Usager implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idUsager;
 	private String nom;
-	private String prenom;
-	private String photo;
+	private String prenom;	
 	private String adresse;
 	private String mail;
 	private String tel;
-	private EtatUsager etat;
+	private int nombreSuspensions;
+	private String etat;
 	
 	@OneToMany
 	@JoinColumn(name="idUsager",referencedColumnName="idUsager")
@@ -41,31 +43,27 @@ public class Usager implements Serializable{
 	
 	public Usager() {
 		super();
-		etat = EtatUsager.Client;
+		etat = EtatUsager.Client.toString();
+		nombreSuspensions = 0;
 	}
 	
-	public Usager(String nom, String prenom) {
-		super();
-		this.nom = nom;
-		this.prenom = prenom;	
-		etat = EtatUsager.Client;
-	}
-	
-	public Usager(String nom, String prenom, String mail, String tel) {
+	public Usager(String nom, String prenom, String adresse, String mail, String tel) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.mail = mail;
 		this.tel = tel;
-		etat = EtatUsager.Client;
-	}	
-
-	public EtatUsager getEtat() {
+		this.adresse=adresse;
+		this.etat = EtatUsager.Client.toString();
+		this.nombreSuspensions = 0;
+	}
+	
+	public String getEtat() {
 		return etat;
 	}
 
 	public void setEtat(EtatUsager etat) {
-		this.etat = etat;
+		this.etat = etat.toString();
 	}
 
 	public Long getIdUsager() {
@@ -86,14 +84,6 @@ public class Usager implements Serializable{
 
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
-	}
-
-	public String getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(String photo) {
-		this.photo = photo;
 	}
 
 	public String getMail() {
@@ -126,6 +116,23 @@ public class Usager implements Serializable{
 	
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
+	}
+	
+	public int getNombreSuspensions() {
+		return nombreSuspensions;
+	}
+
+	public void setNombreSuspensions(int nombreSuspensions) {
+		this.nombreSuspensions = nombreSuspensions;
+	}
+
+	public void incrementNombreSuspensions(){
+		if(nombreSuspensions<2)
+			nombreSuspensions++;
+		else{
+			setEtat(EtatUsager.Desactive);
+			nombreSuspensions = 0;
+		}
 	}
 	
 }
