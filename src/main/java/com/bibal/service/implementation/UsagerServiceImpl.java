@@ -18,15 +18,9 @@ public class UsagerServiceImpl implements UsagerService {
 
 	@Autowired
 	private UsagerRepository usagerRepository;
-	
-	@Override
-	public void addUsager(String nom, String prenom, String mail, String tel) {
-		Usager usager = new Usager(nom, prenom, mail, tel);
-		usagerRepository.save(usager);
-	}
 
 	@Override
-public List<Usager> findAll() {
+	public List<Usager> findAll() {
 		return usagerRepository.findAll();
 	}
 
@@ -55,14 +49,6 @@ public List<Usager> findAll() {
 		return usager;
 	}
 
-
-	@Override
-	public Usager updatePhoto(Long idUsager, String photo) {
-		Usager usager = getById(idUsager);
-		usager.setPhoto(photo);
-		return usager;
-	}
-
 	
 	@Override
 	public Usager enAttenteDeCotisation(Long idUsager) {
@@ -72,10 +58,17 @@ public List<Usager> findAll() {
 	}
 
 	@Override
-	public Usager update(Long idUsager, String nom, String prenom, String tel, String mail) {
+	public void addUsager(String nom, String prenom, String adresse, String mail, String tel) {
+		Usager usager = new Usager(nom, prenom, adresse, mail, tel);
+		usagerRepository.save(usager);
+	}
+
+	@Override
+	public Usager update(Long idUsager, String nom, String prenom, String adresse, String tel, String mail) {
 		Usager usager = getById(idUsager);
 		usager.setNom(nom);
 		usager.setPrenom(prenom);
+		usager.setAdresse(adresse);
 		usager.setTel(tel);
 		usager.setMail(mail);
 		return usager;

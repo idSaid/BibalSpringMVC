@@ -48,10 +48,10 @@ public class UsagerController {
 	}
 
 	@RequestMapping("/addUsager")
-	public String ajouterUsager(@RequestParam("prenom")String prenom, @RequestParam("nom")String nom,
+	public String ajouterUsager(@RequestParam("prenom")String prenom, @RequestParam("nom")String nom, @RequestParam("adresse")String adresse,
 			@RequestParam("mail")String mail, @RequestParam("tel")String tel){				
-		usagerService.addUsager(nom, prenom, mail, tel);
-		return "ListeUsagers";
+		usagerService.addUsager(nom, prenom, adresse, mail, tel);
+		return "redirect:ListeUsagers";
 	}
 	
 	@RequestMapping(value="/searchUsagerByName",method=RequestMethod.GET)
