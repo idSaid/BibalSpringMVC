@@ -300,6 +300,30 @@ body{
 
 #addExemplaire{
 	width: 800px;
-	top: 50%;
+	top: 20%;
 	margin-left: 25%;
+}
+
+#updateExemplaire{
+	width: 800px;
+	top: 20%;
+	margin-left: 25%;
+}
+
+#rendreModalHeader{
+	font-weight:bold;
+	color:white;
+	background-color: #92c882;	
+}
+
+#rendre{
+	width: 900px;
+	top: 15%;
+	margin-left: 22%;
+}
+
+#update{
+	width: 900px;
+	top: 15%;
+	margin-left: 22%;
 }
