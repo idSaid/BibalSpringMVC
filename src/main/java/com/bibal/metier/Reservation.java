@@ -26,10 +26,10 @@ public class Reservation implements Serializable{
 	private Date date;
 	private EtatExemplaire etat;
 	@ManyToOne
-	@JoinColumn(name="userId")
+	@JoinColumn(name="idUsager")
 	private Usager user;
 	@ManyToOne
-	@JoinColumn(name="oeuvreId")
+	@JoinColumn(name="idOeuvre")
 	private Oeuvre oeuvre;
 	
 	public Reservation() {
