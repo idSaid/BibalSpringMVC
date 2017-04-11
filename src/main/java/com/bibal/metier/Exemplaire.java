@@ -13,15 +13,16 @@ import javax.persistence.OneToMany;
 import com.bibal.util.EtatExemplaire;
 
 @Entity
+//@Table(name="exemplaire")
 public class Exemplaire {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idExemplaire;
-	private EtatExemplaire etatExemplaire;
+	private String etatExemplaire;
 	
 	@ManyToOne
-	@JoinColumn(name="oeuvreId")
+	@JoinColumn(name="idOeuvre")
 	Oeuvre oeuvre;
 	
 	@OneToMany
@@ -29,15 +30,15 @@ public class Exemplaire {
 	private List<Emprunt> listEmprunts;
 	
 	public Exemplaire() {
-		this.etatExemplaire=EtatExemplaire.Bonne;
+		this.etatExemplaire=EtatExemplaire.Bonne.toString();
 	}
 
-	public EtatExemplaire getEtatExemplaire() {
+	public String getEtatExemplaire() {
 		return etatExemplaire;
 	}
 
 	public void setEtatExemplaire(EtatExemplaire etatExemplaire) {
-		this.etatExemplaire = etatExemplaire;
+		this.etatExemplaire = etatExemplaire.toString();
 	}
 
 	public Oeuvre getOeuvre() {

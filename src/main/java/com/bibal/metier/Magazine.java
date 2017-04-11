@@ -15,7 +15,7 @@ public class Magazine extends Oeuvre {
 	 */
 	private static final long serialVersionUID = -9064741753569733463L;
 
-	private int delaiRetour;
+	private int delaiRetour=PropertiesManager.getDelai("delaiMagazine");
 	private ThemeMagazine theme;
 	private String titre;
 	private Date dateSortie;

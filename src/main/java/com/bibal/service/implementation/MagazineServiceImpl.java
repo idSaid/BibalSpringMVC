@@ -4,13 +4,18 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.bibal.dao.MagazineRepository;
 import com.bibal.metier.Magazine;
 import com.bibal.service.interfaces.MagazineService;
 import com.bibal.util.ThemeMagazine;
 
+@Service
+@Transactional
 public class MagazineServiceImpl implements MagazineService {
 
 	SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-aaaa");

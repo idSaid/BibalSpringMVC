@@ -1,6 +1,7 @@
 package com.bibal.metier;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -12,8 +13,12 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import com.bibal.service.implementation.ExemplaireServiceImpl;
+import com.bibal.service.interfaces.ExemplaireService;
+import com.bibal.util.EtatExemplaire;
+
 @Entity
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public abstract class Oeuvre implements Serializable{
 
 	/**
@@ -71,8 +76,23 @@ public abstract class Oeuvre implements Serializable{
 		return listeExemplaires;
 	}
 
+	public List<Exemplaire> getExemplairesBons(){
+
+		List<Exemplaire> listExemplairesBons = new ArrayList<>();
+		for (Exemplaire exemplaire : listeExemplaires) {
+			if(exemplaire.getEtatExemplaire().equals(EtatExemplaire.Bonne.toString()))
+				listExemplairesBons.add(exemplaire);
+		}
+		return listExemplairesBons;
+	}
+	
 	public void setListeExemplaires(List<Exemplaire> listeExemplaires) {
 		this.listeExemplaires = listeExemplaires;
+	}
+	
+	public void setListeExemplaires() {		
+		ExemplaireService exemplaireService = new ExemplaireServiceImpl();
+		listeExemplaires = exemplaireService.findByOeuvre(this);
 	}
 	
 }
