@@ -11,7 +11,7 @@ import com.bibal.metier.Exemplaire;
 
 public interface ExemplaireRepository extends JpaRepository<Emprunt, Long> {
 
-	@Query("select e from Exemplaire e where e.oeuvre.getIdOeuvre() = :x")
+	@Query("select e from Exemplaire e where e.oeuvre.idOeuvre=:x")
 	public List<Exemplaire> findByOeuvre(@Param("x")Long idOeuvre);
 	
 }

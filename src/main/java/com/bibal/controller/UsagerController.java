@@ -25,21 +25,6 @@ public class UsagerController {
 	@Autowired
 	private UsagerService usagerService;
 	
-//	@RequestMapping("/")
-//	public String pageParDefaut(){
-//		return "index";
-//	}
-//	
-//	@RequestMapping("/index")
-//	public String index(){
-//		return "index";
-//	}
-//	
-//	@RequestMapping("/ListeUsagers")
-//	public String ListeUsagers(){
-//		return "ListeUsagers";
-//	}
-	
 	@RequestMapping("/ListeUsagers")
 	public String ListeUsagers(Model model){
 		List<Usager> usagers= usagerService.findAll();
@@ -52,6 +37,13 @@ public class UsagerController {
 			@RequestParam("mail")String mail, @RequestParam("tel")String tel){				
 		usagerService.addUsager(nom, prenom, adresse, mail, tel);
 		return "redirect:ListeUsagers";
+	}
+	
+	@RequestMapping("/updateUsager")
+	public String updateUsager(@RequestParam("Id0")String id, @RequestParam("Prenom0")String prenom, @RequestParam("Nom0")String nom, @RequestParam("Adresse0")String adresse,
+			@RequestParam("Mail0")String mail, @RequestParam("Telephone0")String tel){
+		usagerService.update(Long.valueOf(id), nom, prenom, adresse, tel, mail);
+		return"redirect:ListeUsagers";
 	}
 	
 	@RequestMapping(value="/searchUsagerByName",method=RequestMethod.GET)
