@@ -7,6 +7,7 @@ import com.bibal.metier.Oeuvre;
 
 public interface ExemplaireService {
 
+	public void addExemplaire(Exemplaire exemplaire);
 	public List<Exemplaire> findByOeuvre(Oeuvre oeuvre);
 	
 }

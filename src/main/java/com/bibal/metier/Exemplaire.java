@@ -12,51 +12,67 @@ import javax.persistence.OneToMany;
 
 import com.bibal.util.EtatExemplaire;
 
+
 @Entity
 //@Table(name="exemplaire")
-public class Exemplaire {
+public class Exemplaire
+{
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idExemplaire;
 	private String etatExemplaire;
-	
+
 	@ManyToOne
-	@JoinColumn(name="idOeuvre")
+	@JoinColumn(name = "idOeuvre")
 	Oeuvre oeuvre;
-	
+
 	@OneToMany
-	@JoinColumn(name="idExemplaire", referencedColumnName="idExemplaire" )
+	@JoinColumn(name = "idExemplaire", referencedColumnName = "idExemplaire")
 	private List<Emprunt> listEmprunts;
-	
-	public Exemplaire() {
-		this.etatExemplaire=EtatExemplaire.Bonne.toString();
+
+	public Exemplaire()
+	{
+		this.etatExemplaire = EtatExemplaire.Bonne.toString();
 	}
 
-	public String getEtatExemplaire() {
+	public String getEtatExemplaire()
+	{
 		return etatExemplaire;
 	}
 
-	public void setEtatExemplaire(EtatExemplaire etatExemplaire) {
+	public void setEtatExemplaire(EtatExemplaire etatExemplaire)
+	{
 		this.etatExemplaire = etatExemplaire.toString();
 	}
 
-	public Oeuvre getOeuvre() {
+	public Oeuvre getOeuvre()
+	{
 		return oeuvre;
 	}
 
-	public void setOeuvre(Oeuvre oeuvre) {
+	public void setOeuvre(Oeuvre oeuvre)
+	{
 		this.oeuvre = oeuvre;
 	}
 
-	public Long getIdExemplaire() {
+	public Long getIdExemplaire()
+	{
 		return idExemplaire;
 	}
 
-	public List<Emprunt> getListEmprunts() {
+	public List<Emprunt> getListEmprunts()
+	{
 		return listEmprunts;
 	}
-	
-	
-	
+
+	public Exemplaire(String etatExemplaire, Oeuvre oeuvre)
+	{
+		super();
+		this.etatExemplaire = etatExemplaire;
+		this.oeuvre = oeuvre;
+	}
+
+
+
 }

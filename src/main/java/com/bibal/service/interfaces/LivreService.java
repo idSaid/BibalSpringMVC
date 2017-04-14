@@ -6,7 +6,7 @@ import com.bibal.metier.Livre;
 
 public interface LivreService {
 
-	public void addLivre(String nom, String thematique, String ecrivain);
+	public Livre addLivre(String nom, String thematique, String ecrivain);
 	public List<Livre> findAll();
 	public Livre getById(Long id);
 	public List<Livre> searchByName(String nom);

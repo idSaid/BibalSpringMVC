@@ -82,6 +82,7 @@ public abstract class Oeuvre implements Serializable{
 		for (Exemplaire exemplaire : listeExemplaires) {
 			if(exemplaire.getEtatExemplaire().equals(EtatExemplaire.Bonne.toString()))
 				listExemplairesBons.add(exemplaire);
+				
 		}
 		return listExemplairesBons;
 	}

@@ -24,4 +24,10 @@ public class ExemplaireServiceImpl implements ExemplaireService {
 		return exemplaireRepository.findByOeuvre(oeuvre.getIdOeuvre());		
 	}
 
+	@Override
+	public void addExemplaire(Exemplaire exemplaire)
+	{
+		exemplaireRepository.save(exemplaire);
+	}
+
 }
