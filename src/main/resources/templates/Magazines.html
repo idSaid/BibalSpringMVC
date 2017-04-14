@@ -58,7 +58,7 @@
 				</div>
 				<div class="panel-body">
 
-					<form action="#" method="get">
+					<form th:action="@{/Magazines}" method="get">
 						<button type="button" style="float: right;"
 							class="btn btn-lg btn-success left-rounded" data-toggle="modal"
 							data-target="#add">
@@ -75,7 +75,10 @@
 									<th class="sorting_asc" tabindex="0"
 										aria-controls="myDataTable" rowspan="1" colspan="1"
 										style="text-align: center;" aria-sort="ascending"
-										aria-label="Name: activate to sort column descending">Magazine</th>
+										aria-label="Name: activate to sort column descending">Id</th>
+									<th class="sorting" tabindex="0" aria-controls="myDataTable"
+										rowspan="1" colspan="1" style="text-align: center;"
+										aria-label="Position: activate to sort column ascending">Magazine</th>
 									<th class="sorting" tabindex="0" aria-controls="myDataTable"
 										rowspan="1" colspan="1" style="text-align: center;"
 										aria-label="Position: activate to sort column ascending">Titre</th>
@@ -100,50 +103,14 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr class="odd" role="row">
-									<td style="text-align: center">Zamane</td>
-									<td style="text-align: center">Ben Barka, L'HOMME</td>
-									<td style="text-align: center">123</td>
-									<td style="text-align: center">Dec-2013</td>
-									<td style="text-align: center">Histoire</td>
-									<td style="text-align: center"><a
-										th:href="@{/DetailMagazine}" href="DetailMagazine">2</a></td>
-									<td style="text-align: center">
-										<button type="button" class="btn btn-warning"
-											data-toggle="modal" data-target="#update">
-											<span class="glyphicon glyphicon-edit"></span>
-										</button>
-										<button type="button" class="btn btn-danger">
-											<span class="glyphicon glyphicon-trash"></span>
-										</button>
-									</td>
-								</tr>
-								<tr class="odd" role="row">
-									<td style="text-align: center">Zamane</td>
-									<td style="text-align: center">Ben Barka, L'HOMME</td>
-									<td style="text-align: center">123</td>
-									<td style="text-align: center">Dec-2013</td>
-									<td style="text-align: center">Histoire</td>
-									<td style="text-align: center"><a
-										th:href="@{/DetailMagazine}" href="DetailMagazine">2</a></td>
-									<td style="text-align: center">
-										<button type="button" class="btn btn-warning"
-											data-toggle="modal" data-target="#update">
-											<span class="glyphicon glyphicon-edit"></span>
-										</button>
-										<button type="button" class="btn btn-danger">
-											<span class="glyphicon glyphicon-trash"></span>
-										</button>
-									</td>
-								</tr>
-								<tr class="odd" role="row">
-									<td style="text-align: center">Zamane</td>
-									<td style="text-align: center">Ben Barka, L'HOMME</td>
-									<td style="text-align: center">123</td>
-									<td style="text-align: center">Dec-2013</td>
-									<td style="text-align: center">Histoire</td>
-									<td style="text-align: center"><a
-										th:href="@{/DetailMagazine}" href="DetailMagazine">2</a></td>
+								<tr class="odd" role="row" th:each="m:${allMagazines}">
+									<td style="text-align: center" th:text="${m.idOeuvre}"></td>
+									<td style="text-align: center" th:text="${m.nom}"></td>
+									<td style="text-align: center" th:text="${m.titre}"></td>
+									<td style="text-align: center" th:text="${m.numeroDeSerie}"></td>
+									<td style="text-align: center" th:text="${m.dateSortie}"></td>
+									<td style="text-align: center" th:text="${m.theme}"></td>									
+									<td style="text-align: center" th:text="${m.getExemplairesBons().size()}"></td>									
 									<td style="text-align: center">
 										<button type="button" class="btn btn-warning"
 											data-toggle="modal" data-target="#update">
@@ -168,7 +135,7 @@
 											nouveau Magazine</h3>
 									</div>
 									<div class="modal-body">
-										<form action="#" method="post">
+										<form th:action="@{/addMagazines}" method="post">
 											<div class="form-group">
 												<div class="form-group">
 													<label class="control-label">Magazine</label> <input

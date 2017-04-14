@@ -67,7 +67,7 @@
 										d'exemplaires</th>
 									<th class="sorting" tabindex="0" aria-controls="myDataTable"
 										rowspan="1" colspan="1" style="text-align: center;"
-										aria-label="Start date: activate to sort column ascending">Action</th>
+										aria-label="Start date: activate to sort column ascending">Consulter</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -78,13 +78,12 @@
 									<td style="text-align: center" th:text="${l.ecrivain}"></td>
 									<td style="text-align: center" th:text="${l.getExemplairesBons().size()}"></td>									
 									<td style="text-align: center">
-										<button type="button" class="btn btn-warning"
-											data-toggle="modal" data-target="#update">
-											<span class="glyphicon glyphicon-edit"></span>
-										</button>
-										<button type="button" class="btn btn-danger">
-											<span class="glyphicon glyphicon-trash"></span>
-										</button>
+										<a th:href="@{/DetailLivre(idLivre=${l.idOeuvre})}">
+											<button type="button" class="btn btn-sm btn-primary"
+												data-toggle="modal" data-target="">
+												<span class="glyphicon glyphicon-eye-open"></span>
+											</button>	
+										</a>									
 									</td>
 								</tr>
 							</tbody>

@@ -31,8 +31,7 @@ public class LivreServiceImpl implements LivreService{
 
 	@Override
 	public Livre getById(Long idLivre) {
-		// TODO Auto-generated method stub
-		return null;
+		return livreRepository.findOne(idLivre);
 	}
 
 	@Override
