@@ -41,9 +41,9 @@ public class Exemplaire
 		return etatExemplaire;
 	}
 
-	public void setEtatExemplaire(EtatExemplaire etatExemplaire)
+	public void setEtatExemplaire(String etatExemplaire)
 	{
-		this.etatExemplaire = etatExemplaire.toString();
+		this.etatExemplaire = etatExemplaire;
 	}
 
 	public Oeuvre getOeuvre()

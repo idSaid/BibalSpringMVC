@@ -285,7 +285,7 @@ body {
 	background-color: #92c882;
 }
 
-#updateModalHeader {
+.modal-header.update {
 	color: white;
 	background-color: #f7c464;
 }
@@ -338,14 +338,12 @@ body {
 	margin-left: 22%;
 }
 
-#update {
-	width: 900px;
-	top: 15%;
-	margin-left: 22%;
-}
-
 #addEmprunt {
 	width: 800px;
 	top: 20%;
 	margin-left: 22%;
+}
+
+#Suspendu {
+	background-color: #dadede;
 }

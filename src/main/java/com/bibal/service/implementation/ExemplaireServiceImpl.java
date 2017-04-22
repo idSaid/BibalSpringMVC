@@ -18,16 +18,26 @@ public class ExemplaireServiceImpl implements ExemplaireService {
 
 	@Autowired
 	private ExemplaireRepository exemplaireRepository;
-	
+
 	@Override
 	public List<Exemplaire> findByOeuvre(Oeuvre oeuvre) {
-		return exemplaireRepository.findByOeuvre(oeuvre.getIdOeuvre());		
+		return exemplaireRepository.findByOeuvre(oeuvre.getIdOeuvre());
 	}
 
 	@Override
-	public void addExemplaire(Exemplaire exemplaire)
-	{
+	public void addExemplaire(Exemplaire exemplaire) {
 		exemplaireRepository.save(exemplaire);
+	}
+
+	@Override
+	public Exemplaire getById(Long id) {
+		return exemplaireRepository.findOne(id);
+	}
+
+	@Override
+	public void updateEtatExemplaire(String etatExemplaire, Long idExemplaire) {
+		Exemplaire exemplaire = exemplaireRepository.findOne(idExemplaire);
+		exemplaire.setEtatExemplaire(etatExemplaire);
 	}
 
 }

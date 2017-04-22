@@ -10,9 +10,10 @@ public interface UsagerService {
 	public List<Usager> findAll();
 	public Usager getById(Long idUsager);
 	public List<Usager> searchByName(String nom);
-	public Usager disable(Long idUsager);
+	public void activer(Long idUsager);
 	public Usager suspendre(Long idUsager);
 	public Usager enAttenteDeCotisation(Long idUsager);
 	public Usager update(Long idUsager, String nom, String prenom, String adresse, String tel, String mail);
+	public List<Usager> getUsagersByEtat(String etat);
 	
 }

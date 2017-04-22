@@ -62,8 +62,8 @@ public class Usager implements Serializable{
 		return etat;
 	}
 
-	public void setEtat(EtatUsager etat) {
-		this.etat = etat.toString();
+	public void setEtat(String etat) {
+		this.etat = etat;
 	}
 
 	public Long getIdUsager() {
@@ -126,11 +126,15 @@ public class Usager implements Serializable{
 		this.nombreSuspensions = nombreSuspensions;
 	}
 
+	public void suspendre(){
+		setEtat(EtatUsager.Suspendu.toString());
+		incrementNombreSuspensions();
+	}
 	public void incrementNombreSuspensions(){
 		if(nombreSuspensions<2)
 			nombreSuspensions++;
 		else{
-			setEtat(EtatUsager.Desactive);
+			setEtat(EtatUsager.Desactive.toString());
 			nombreSuspensions = 0;
 		}
 	}

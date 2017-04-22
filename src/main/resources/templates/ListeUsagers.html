@@ -108,7 +108,8 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr class="odd" role="row" th:each="u:${allUsagers}">
+									<tr class="odd" role="row" th:each="u:${allUsagers}"
+										th:id="${u.etat}">
 										<td style="text-align: center" th:text="${u.idUsager}"></td>
 										<td style="text-align: center" th:text="${u.nom}"></td>
 										<td style="text-align: center" th:text="${u.prenom}"></td>
@@ -116,6 +117,14 @@
 										<td style="text-align: center" th:text="${u.mail}"></td>
 										<td style="text-align: center" th:text="${u.tel}"></td>
 										<td style="text-align: center">
+
+											<button th:if="${u.etat}!='Client'" type="button"
+												class="btn btn-success" data-toggle="modal"
+												data-target="#activerUsager"
+												th:onclick="|getIdUsager(${u.idUsager})|">
+												<span class="glyphicon glyphicon-ok"></span>
+											</button>
+
 											<button type="button" class="btn btn-warning update"
 												data-toggle="modal" data-target="#update">
 												<span class="glyphicon glyphicon-edit"></span>
@@ -130,6 +139,32 @@
 						</div>
 					</form>
 
+
+					<div class="modal fade" id="activerUsager" role="dialog"
+						style="display: none;" aria-hidden="true">
+						<div class="modal-dialog">
+
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header" id="addModalHeader">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h3 class="modal-title" style="text-align: center">Activer
+										usager</h3>
+								</div>
+								<div class="modal-body">
+									<form th:action="@{/activer}" method="get">
+										<input type="hidden" name="idUsager" value="" />
+										<p>Voulez-vous reactiver l'usager ?</p>
+										<button type="submit" class="btn btn-success">
+											<span class="glyphicon glyphicon-ok"></span> Oui
+										</button>
+										<button type="button" class="btn">Annuler</button>
+									</form>
+								</div>
+							</div>
+
+						</div>
+					</div>
 
 					<div class="modal fade" id="add" role="dialog"
 						style="display: none;" aria-hidden="true">
@@ -183,9 +218,7 @@
 
 					<div class="modal fade" id="update" role="dialog"
 						aria-labelledby="myModalLabel">
-						<div class="modal-dialog">
-							<div class="modal-content"></div>
-						</div>
+
 						<div class="modal-dialog">
 							<div class="modal-content"></div>
 						</div>
@@ -193,20 +226,19 @@
 							<div class="modal-content">
 								<div class="modal-header update">
 									<button type="button" class="close" data-dismiss="modal">
-										<span aria-hidden="true" class="">× </span><span
+										<span aria-hidden="true" class="">×</span><span
 											class="sr-only">Close</span>
 
 									</button>
-									<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+									<h4 class="modal-title" id="myModalLabel">Modifier usager</h4>
 
 								</div>
 
 								<div class="modal-body update"></div>
 								<div class="modal-footer update">
 									<button type="button" class="btn btn-default"
-										data-dismiss="modal">Close</button>
-									<button type="button" class="btn btn-success">Save
-										changes</button>
+										data-dismiss="modal">Fermer</button>
+									<button type="button" class="btn btn-warning">Modifier</button>
 								</div>
 
 							</div>
@@ -262,9 +294,13 @@
 		<script
 			src="@{http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
 
+		<script type="text/javascript">
+			function getIdUsager(idUsager){
+				document.getElementsByName("idUsager")[0].value = idUsager;
+			}
+		</script>
 
-
-		<script>		
+		<script>
 			$(".update[data-target='#update']")
 					.click(
 							function() {

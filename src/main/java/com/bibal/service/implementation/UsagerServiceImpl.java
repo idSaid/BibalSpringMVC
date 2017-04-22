@@ -30,30 +30,27 @@ public class UsagerServiceImpl implements UsagerService {
 	}
 
 	@Override
-	public List<Usager> searchByName(String nom) {	
+	public List<Usager> searchByName(String nom) {
 		return usagerRepository.searchUsagersByName(nom);
 	}
 
-
 	@Override
-	public Usager disable(Long idUsager) {
+	public void activer(Long idUsager) {
 		Usager usager = getById(idUsager);
-		usager.setEtat(EtatUsager.Desactive);
-		return usager;
+		usager.setEtat(EtatUsager.Client.toString());
 	}
 
 	@Override
 	public Usager suspendre(Long idUsager) {
 		Usager usager = getById(idUsager);
-		usager.setEtat(EtatUsager.Suspendu);
+		usager.setEtat(EtatUsager.Suspendu.toString());
 		return usager;
 	}
 
-	
 	@Override
 	public Usager enAttenteDeCotisation(Long idUsager) {
 		Usager usager = getById(idUsager);
-		usager.setEtat(EtatUsager.EnAttenteDeContisation);
+		usager.setEtat(EtatUsager.EnAttenteDeContisation.toString());
 		return usager;
 	}
 
@@ -72,6 +69,11 @@ public class UsagerServiceImpl implements UsagerService {
 		usager.setTel(tel);
 		usager.setMail(mail);
 		return usager;
+	}
+
+	@Override
+	public List<Usager> getUsagersByEtat(String etat) {
+		return usagerRepository.searchUsagersByEtat(etat);
 	}
 
 }

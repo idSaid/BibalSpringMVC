@@ -33,7 +33,7 @@ public class Emprunt {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void Empr(Usager usager, Exemplaire exemplaire) {		
+	public Emprunt(Usager usager, Exemplaire exemplaire) {		
 		this.usager=usager;
 		this.exemplaire=exemplaire;
 		this.date=new Date();

@@ -9,5 +9,6 @@ public interface ExemplaireService {
 
 	public void addExemplaire(Exemplaire exemplaire);
 	public List<Exemplaire> findByOeuvre(Oeuvre oeuvre);
-	
+	public Exemplaire getById(Long id);
+	public void updateEtatExemplaire(String etatExemplaire, Long idExemplaire);
 }
