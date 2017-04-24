@@ -11,4 +11,6 @@ public interface ExemplaireService {
 	public List<Exemplaire> findByOeuvre(Oeuvre oeuvre);
 	public Exemplaire getById(Long id);
 	public void updateEtatExemplaire(String etatExemplaire, Long idExemplaire);
+	public List<Exemplaire> getAllExemplaires(); 
+	public List<Exemplaire> getExemplaireNonEmprunter(); 
 }
