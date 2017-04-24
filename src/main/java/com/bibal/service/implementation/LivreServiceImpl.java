@@ -47,10 +47,12 @@ public class LivreServiceImpl implements LivreService
 	}
 
 	@Override
-	public Livre update(Long idLivre, String nom, String thematique, String ecrivain)
+	public void update(Long idLivre, String nom, String thematique, String ecrivain)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		Livre livre = livreRepository.findOne(idLivre);
+		livre.setNom(nom);
+		livre.setEcrivain(ecrivain);
+		livre.setThematique(thematique);
 	}
 
 	@Override

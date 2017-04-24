@@ -10,10 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.bibal.util.EtatExemplaire;
+import com.bibal.util.EtatReservation;
+
 
 @Entity
-public class Reservation implements Serializable{
+public class Reservation implements Serializable
+{
 
 	/**
 	 * 
@@ -21,47 +23,57 @@ public class Reservation implements Serializable{
 	private static final long serialVersionUID = -8608120265426737130L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idReservation;
 	private Date date;
-	private EtatExemplaire etat;
+	private String etatReservation;
 	@ManyToOne
-	@JoinColumn(name="idUsager")
+	@JoinColumn(name = "idUsager")
 	private Usager user;
 	@ManyToOne
-	@JoinColumn(name="idOeuvre")
+	@JoinColumn(name = "idOeuvre")
 	private Oeuvre oeuvre;
-	
-	public Reservation() {
+
+	public Reservation()
+	{
 		// TODO Auto-generated constructor stub
 	}
-	
-	public Reservation(Date date, EtatExemplaire etat) {
-		super();		
+
+	public Reservation(Date date)
+	{
+		super();
 		this.date = date;
-		this.etat = etat;
+		this.etatReservation = EtatReservation.EnCours.toString();
 	}
-	
-	public Long getIdReservation() {
+
+	public Reservation(Date date, Usager user, Oeuvre oeuvre)
+	{
+		super();
+		this.date = date;
+		this.user = user;
+		this.oeuvre = oeuvre;
+		this.etatReservation = EtatReservation.EnCours.toString();
+	}
+
+	public Long getIdReservation()
+	{
 		return idReservation;
 	}
 
-	public Date getDate() {
+	public Date getDate()
+	{
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(Date date)
+	{
 		this.date = date;
 	}
 
-	public EtatExemplaire getEtat() {
-		return etat;
+	public void annulerReservation()
+	{
+		this.etatReservation = EtatReservation.Annulee.toString();
 	}
 
-	public void setEtat(EtatExemplaire etat) {
-		this.etat = etat;
-	}
-	
-	
-	
+
 }

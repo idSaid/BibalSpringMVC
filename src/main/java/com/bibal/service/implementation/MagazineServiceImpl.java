@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.bibal.dao.MagazineRepository;
 import com.bibal.metier.Magazine;
 import com.bibal.service.interfaces.MagazineService;
-import com.bibal.util.ThemeMagazine;
+import com.bibal.util.EtatReservation;
 
 @Service
 @Transactional
@@ -43,7 +43,7 @@ public class MagazineServiceImpl implements MagazineService {
 		
 		Magazine magazine = getById(id);
 		magazine.setNom(nom);
-		magazine.setTheme(ThemeMagazine.valueOf(theme));
+		magazine.setTheme(EtatReservation.valueOf(theme));
 		magazine.setTitre(titre);
 		try {
 			magazine.setDateSortie(formatter.parse(dateSortie));
@@ -72,7 +72,7 @@ public class MagazineServiceImpl implements MagazineService {
 	public void addMagazineHorsSerie(String nom, String theme, String titre, String dateSortie) {
 		
 		try {
-			magazineRepository.save(new Magazine(nom, ThemeMagazine.valueOf(theme), titre, formatter.parse(dateSortie), true));
+			magazineRepository.save(new Magazine(nom, EtatReservation.valueOf(theme), titre, formatter.parse(dateSortie), true));
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		} catch (ParseException e) {
@@ -85,7 +85,7 @@ public class MagazineServiceImpl implements MagazineService {
 	public void addMagazine(String nom, String theme, String titre, String dateSortie, String numeroDeSerie) {
 		
 		try {
-			magazineRepository.save(new Magazine(nom, ThemeMagazine.valueOf(theme), titre, formatter.parse(dateSortie), false, Integer.valueOf(numeroDeSerie)));
+			magazineRepository.save(new Magazine(nom, EtatReservation.valueOf(theme), titre, formatter.parse(dateSortie), false, Integer.valueOf(numeroDeSerie)));
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		} catch (ParseException e) {
@@ -97,7 +97,7 @@ public class MagazineServiceImpl implements MagazineService {
 	public Magazine updateHorsSerie(Long id, String nom, String theme, String titre, String dateSortie) {
 		Magazine magazine = getById(id);
 		magazine.setNom(nom);
-		magazine.setTheme(ThemeMagazine.valueOf(theme));
+		magazine.setTheme(EtatReservation.valueOf(theme));
 		magazine.setTitre(titre);
 		try {
 			magazine.setDateSortie(formatter.parse(dateSortie));

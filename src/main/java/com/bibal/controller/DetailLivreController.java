@@ -86,8 +86,8 @@ public class DetailLivreController {
 	}
 
 	@RequestMapping(value = "/updateEtatExemplaire", method = RequestMethod.GET)
-	public String updateEtatExemplaire(String etatExemplaire, Long idExemplaire, Long idLivre) {
-		exemplaireService.updateEtatExemplaire(etatExemplaire, idExemplaire);
+	public String updateEtatExemplaire(String etatExemplaire, Long idExemplaireU, Long idLivre) {
+		exemplaireService.updateEtatExemplaire(etatExemplaire, idExemplaireU);
 		return "redirect:/DetailLivre?idLivre=" + idLivre;
 	}
 

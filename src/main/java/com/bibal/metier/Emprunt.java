@@ -19,7 +19,6 @@ public class Emprunt {
 	private Long idEmprunt;
 	private Date date;
 	private Date dateRetourEffective;
-	private EtatExemplaire etatExemplaire;
 	
 	@ManyToOne
 	@JoinColumn(name="idUsager")
@@ -53,14 +52,6 @@ public class Emprunt {
 
 	public void setDateRetourEffective(Date dateRetourEffective) {
 		this.dateRetourEffective = dateRetourEffective;
-	}
-
-	public EtatExemplaire getEtatExemplaire() {
-		return etatExemplaire;
-	}
-
-	public void setEtatExemplaire(EtatExemplaire etatExemplaire) {
-		this.etatExemplaire = etatExemplaire;
 	}
 
 	public Usager getUsager() {
