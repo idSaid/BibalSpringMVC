@@ -60,7 +60,6 @@ public class DetailLivreController {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-
 		return "DetailLivre";
 	}
 
@@ -85,13 +84,13 @@ public class DetailLivreController {
 		return disponobilite;
 	}
 
-	@RequestMapping(value = "/updateEtatExemplaire", method = RequestMethod.GET)
+	@RequestMapping(value = "/updateEtatExemplaireL", method = RequestMethod.GET)
 	public String updateEtatExemplaire(String etatExemplaire, Long idExemplaireU, Long idLivre) {
 		exemplaireService.updateEtatExemplaire(etatExemplaire, idExemplaireU);
 		return "redirect:/DetailLivre?idLivre=" + idLivre;
 	}
 
-	@RequestMapping(value = "/addExemplaire", method = RequestMethod.GET)
+	@RequestMapping(value = "/addExemplaireL", method = RequestMethod.GET)
 	public String addExemplaire(Long idLivre) {
 		Oeuvre oeuvre = livreService.getById(idLivre);
 		Exemplaire exemplaire = new Exemplaire(EtatExemplaire.Bonne.toString(), oeuvre);

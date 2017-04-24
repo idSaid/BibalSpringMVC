@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.bibal.dao.LivreRepository;
 import com.bibal.metier.Livre;
+import com.bibal.metier.Oeuvre;
 import com.bibal.service.interfaces.LivreService;
 
 
@@ -68,5 +69,7 @@ public class LivreServiceImpl implements LivreService
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+
 
 }
