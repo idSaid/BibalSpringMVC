@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -69,6 +70,13 @@ public class LivreController
 		}
 
 		return "redirect:DetailLivre?idLivre=" + livre.getIdOeuvre();
+	}
+
+	@PostMapping("/updateLivre")
+	public String updateLivre(Long idLivre, String nom, String thematique, String auteur)
+	{
+		livreService.update(idLivre, nom, thematique, auteur);
+		return "redirect:/DetailLivre?idLivre=" + idLivre;
 	}
 
 }

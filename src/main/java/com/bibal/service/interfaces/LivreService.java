@@ -12,6 +12,6 @@ public interface LivreService {
 	public List<Livre> searchByName(String nom);
 	public List<Livre> searchByAuthor(String author);
 	public List<Livre> searchByThematique(String thematique);
-	public Livre update(Long id, String nom, String thematique, String ecrivain);
+	public void update(Long id, String nom, String thematique, String ecrivain);
 	
 }

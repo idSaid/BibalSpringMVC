@@ -25,8 +25,8 @@ public class EmpruntController {
 	}
 
 	@RequestMapping(value = "/addEmprunt", method = RequestMethod.GET)
-	public String addEmprunt(Long idExemplaire, Long idUsager, String page, Long idLivre) {
-		empruntService.addEmprunt(idUsager, idExemplaire);
+	public String addEmprunt(Long idExemplaireA, Long idUsager, String page, Long idLivre) {
+		empruntService.addEmprunt(idUsager, idExemplaireA);
 		if (page.equals("detailLivre")) {
 			return "redirect:/DetailLivre?idLivre=" + idLivre;
 		} else {
@@ -36,8 +36,8 @@ public class EmpruntController {
 	}
 	
 	@RequestMapping(value = "/rendre", method = RequestMethod.GET)
-	public String redre(String etatExemplaire, Long idExemplaire, Long idLivre) {
-		empruntService.rendre(etatExemplaire, idExemplaire);
+	public String redre(String etatExemplaire, Long idExemplaireR, Long idLivre) {
+		empruntService.rendre(etatExemplaire, idExemplaireR);
 		return "redirect:/DetailLivre?idLivre=" + idLivre;
 	}
 	

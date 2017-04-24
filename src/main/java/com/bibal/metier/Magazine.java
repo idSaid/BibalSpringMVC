@@ -5,7 +5,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 
 import com.bibal.util.PropertiesManager;
-import com.bibal.util.ThemeMagazine;
+import com.bibal.util.EtatReservation;
 
 @Entity	
 public class Magazine extends Oeuvre {
@@ -16,7 +16,7 @@ public class Magazine extends Oeuvre {
 	private static final long serialVersionUID = -9064741753569733463L;
 
 	private int delaiRetour=PropertiesManager.getDelai("delaiMagazine");
-	private ThemeMagazine theme;
+	private EtatReservation theme;
 	private String titre;
 	private Date dateSortie;
 	private boolean horsSerie;
@@ -27,7 +27,7 @@ public class Magazine extends Oeuvre {
 		this.delaiRetour=PropertiesManager.getDelai("delaiMagazine");
 	}
 		
-	public Magazine(String nom, ThemeMagazine theme, String titre, Date dateSortie, boolean horsSerie) {
+	public Magazine(String nom, EtatReservation theme, String titre, Date dateSortie, boolean horsSerie) {
 		super(nom);
 		this.delaiRetour = PropertiesManager.getDelai("delaiMagazine");
 		this.theme = theme;
@@ -36,7 +36,7 @@ public class Magazine extends Oeuvre {
 		this.horsSerie = horsSerie;
 	}
 
-	public Magazine(String nom, ThemeMagazine theme, String titre, Date dateSortie, boolean horsSerie, int numeroDeSerie) {
+	public Magazine(String nom, EtatReservation theme, String titre, Date dateSortie, boolean horsSerie, int numeroDeSerie) {
 		super(nom);
 		this.delaiRetour = PropertiesManager.getDelai("delaiMagazine");
 		this.theme = theme;
@@ -46,11 +46,11 @@ public class Magazine extends Oeuvre {
 		this.numeroDeSerie = numeroDeSerie;
 	}
 
-	public ThemeMagazine getTheme() {
+	public EtatReservation getTheme() {
 		return theme;
 	}
 
-	public void setTheme(ThemeMagazine theme) {
+	public void setTheme(EtatReservation theme) {
 		this.theme = theme;
 	}
 
