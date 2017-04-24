@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.bibal.util.EtatReservation;
 
@@ -74,6 +76,32 @@ public class Reservation implements Serializable
 	{
 		this.etatReservation = EtatReservation.Annulee.toString();
 	}
+
+	public Usager getUser()
+	{
+		return user;
+	}
+
+	public void setUser(Usager user)
+	{
+		this.user = user;
+	}
+
+	public Oeuvre getOeuvre()
+	{
+		return oeuvre;
+	}
+
+	public void setOeuvre(Oeuvre oeuvre)
+	{
+		this.oeuvre = oeuvre;
+	}
+
+	public void setIdReservation(Long idReservation)
+	{
+		this.idReservation = idReservation;
+	}
+
 
 
 }

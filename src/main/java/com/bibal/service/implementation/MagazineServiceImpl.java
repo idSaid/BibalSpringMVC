@@ -2,6 +2,7 @@ package com.bibal.service.implementation;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -14,97 +15,103 @@ import com.bibal.metier.Magazine;
 import com.bibal.service.interfaces.MagazineService;
 import com.bibal.util.EtatReservation;
 
+
 @Service
 @Transactional
-public class MagazineServiceImpl implements MagazineService {
+public class MagazineServiceImpl implements MagazineService
+{
 
-	SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-aaaa");
-	
+	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
 	@Autowired
 	MagazineRepository magazineRepository;
-	
+
 	@Override
-	public List<Magazine> findAll() {		
+	public List<Magazine> findAll()
+	{
 		return magazineRepository.findAll();
 	}
 
 	@Override
-	public Magazine getById(Long id) {
+	public Magazine getById(Long id)
+	{
 		return magazineRepository.findOne(id);
 	}
 
 	@Override
-	public List<Magazine> searchByName(String nom) {
+	public List<Magazine> searchByName(String nom)
+	{
 		return magazineRepository.searchByName(nom);
 	}
 
 	@Override
-	public Magazine update(Long id, String nom,String theme, String titre, String dateSortie,String numeroDeSerie) {
-		
+	public Magazine update(Long id, String nom, String theme, String titre, String dateSortie, String numeroDeSerie)
+	{
+
 		Magazine magazine = getById(id);
 		magazine.setNom(nom);
-		magazine.setTheme(EtatReservation.valueOf(theme));
+		magazine.setTheme(EtatReservation.valueOf(theme).toString());
 		magazine.setTitre(titre);
-		try {
+		try
+		{
 			magazine.setDateSortie(formatter.parse(dateSortie));
-		} catch (ParseException e) {
+		}
+		catch (ParseException e)
+		{
 			e.printStackTrace();
 		}
-		magazine.setHorsSerie(false);		
 		magazine.setNumeroDeSerie(Integer.parseInt(numeroDeSerie));
 		magazineRepository.save(magazine);
 		return magazine;
 	}
 
 	@Override
-	public List<Magazine> searchByAuthor(String author) {
+	public List<Magazine> searchByAuthor(String author)
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Magazine> searchByThematique(String thematique) {
+	public List<Magazine> searchByThematique(String thematique)
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void addMagazineHorsSerie(String nom, String theme, String titre, String dateSortie) {
-		
-		try {
-			magazineRepository.save(new Magazine(nom, EtatReservation.valueOf(theme), titre, formatter.parse(dateSortie), true));
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}		
-		
-	}
+	public void addMagazine(String nom, String theme, String titre, String dateSortie, int numeroDeSerie)
+	{
 
-	@Override
-	public void addMagazine(String nom, String theme, String titre, String dateSortie, String numeroDeSerie) {
-		
-		try {
-			magazineRepository.save(new Magazine(nom, EtatReservation.valueOf(theme), titre, formatter.parse(dateSortie), false, Integer.valueOf(numeroDeSerie)));
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}		
-	}
-
-	@Override
-	public Magazine updateHorsSerie(Long id, String nom, String theme, String titre, String dateSortie) {
-		Magazine magazine = getById(id);
-		magazine.setNom(nom);
-		magazine.setTheme(EtatReservation.valueOf(theme));
-		magazine.setTitre(titre);
-		try {
-			magazine.setDateSortie(formatter.parse(dateSortie));
-		} catch (ParseException e) {
+		try
+		{
+			magazineRepository.save(new Magazine(nom, theme, titre, formatter.parse(dateSortie), numeroDeSerie));
+		}
+		catch (NumberFormatException e)
+		{
+			System.out.println("NumberFormatException :"+e.getMessage());
+		}
+		catch (Exception e)
+		{
 			e.printStackTrace();
 		}
-		magazine.setHorsSerie(false);				
+	}
+
+	@Override
+	public Magazine updateHorsSerie(Long id, String nom, String theme, String titre, String dateSortie)
+	{
+		Magazine magazine = getById(id);
+		magazine.setNom(nom);
+		magazine.setTheme(EtatReservation.valueOf(theme).toString());
+		magazine.setTitre(titre);
+		try
+		{
+			magazine.setDateSortie(formatter.parse(dateSortie));
+		}
+		catch (ParseException e)
+		{
+			e.printStackTrace();
+		}
 		magazineRepository.save(magazine);
 		return magazine;
 	}

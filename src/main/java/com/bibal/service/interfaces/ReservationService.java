@@ -15,5 +15,5 @@ public interface ReservationService
 
 	public void addReservation(Date date, Usager usager, Oeuvre oeuvre);
 
-	public List<Reservation> findAllReservation();
+	public List<Reservation> findAllReservationEnCours();
 }

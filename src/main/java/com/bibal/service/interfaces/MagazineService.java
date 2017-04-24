@@ -1,13 +1,13 @@
 package com.bibal.service.interfaces;
 
+import java.util.Date;
 import java.util.List;
 
 import com.bibal.metier.Magazine;
 
 public interface MagazineService {
 
-	public void addMagazineHorsSerie(String nom, String theme, String titre, String dateSortie);
-	public void addMagazine(String nom, String theme, String titre, String dateSortie, String numeroDeSerie);
+	public void addMagazine(String nom, String theme, String titre, String dateSortie, int numeroDeSerie);
 	public List<Magazine> findAll();
 	public Magazine getById(Long id);
 	public List<Magazine> searchByName(String nom);

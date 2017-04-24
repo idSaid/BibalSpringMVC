@@ -6,7 +6,7 @@
 
 <head>
 <meta charset="UTF-8" />
-<title>Magazines</title>
+<title>Livres</title>
 
 <script th:src="@{/js/jquery.js}" src="/js/jquery.js"></script>
 <link rel="stylesheet" type="text/css"
@@ -17,21 +17,6 @@
 	src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js">
 	
 </script>
-
-<script th:src="@{https://code.jquery.com/jquery-1.11.3.min.js}"
-	src="https://code.jquery.com/jquery-1.11.3.min.js">
-	
-</script>
-
-<script
-	th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js}"
-	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js">
-	
-</script>
-
-<link rel="stylesheet"
-	th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css}"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -47,7 +32,6 @@
 	});
 </script>
 
-
 </head>
 <body>
 	<section layout:fragment="custom-content">
@@ -58,7 +42,7 @@
 				</div>
 				<div class="panel-body">
 
-					<form th:action="@{/Magazines}" method="get">
+					<form th:action="@{/Livres}" method="get">
 						<button type="button" style="float: right;"
 							class="btn btn-lg btn-success left-rounded" data-toggle="modal"
 							data-target="#add">
@@ -66,7 +50,7 @@
 						</button>
 					</form>
 
-					<div id="magazineDataTable" class="col-sm-24" align="center">
+					<div id="livreDataTable" class="col-sm-20" align="center">
 						<table id="datatable"
 							class="table table-striped table-bordered dataTable"
 							cellspacing="0">
@@ -95,11 +79,7 @@
 										aria-label="Position: activate to sort column ascending">Thème</th>
 									<th class="sorting" tabindex="0" aria-controls="myDataTable"
 										rowspan="1" colspan="1" style="text-align: center;"
-										aria-label="Age: activate to sort column ascending">Nombre
-										d'exemplaires</th>
-									<th class="sorting" tabindex="0" aria-controls="myDataTable"
-										rowspan="1" colspan="1" style="text-align: center;"
-										aria-label="Start date: activate to sort column ascending">Action</th>
+										aria-label="Start date: activate to sort column ascending">Consulter</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -109,21 +89,20 @@
 									<td style="text-align: center" th:text="${m.titre}"></td>
 									<td style="text-align: center" th:text="${m.numeroDeSerie}"></td>
 									<td style="text-align: center" th:text="${m.dateSortie}"></td>
-									<td style="text-align: center" th:text="${m.theme}"></td>									
-									<td style="text-align: center" th:text="${m.getExemplairesBons().size()}"></td>									
-									<td style="text-align: center">
-										<button type="button" class="btn btn-warning"
-											data-toggle="modal" data-target="#update">
-											<span class="glyphicon glyphicon-edit"></span>
-										</button>
-										<button type="button" class="btn btn-danger">
-											<span class="glyphicon glyphicon-trash"></span>
-										</button>
-									</td>
+									<td style="text-align: center" th:text="${m.theme}"></td>
+									<td style="text-align: center"><a
+										th:href="@{/DetailMagazine(idMagazine=${m.idOeuvre})}">
+											<button type="button" class="btn btn-sm btn-primary"
+												data-toggle="modal" data-target="">
+												<span class="glyphicon glyphicon-eye-open"></span>
+											</button>
+									</a></td>
 								</tr>
 							</tbody>
 						</table>
-						<div class="modal fade" id="add" role="dialog"
+
+
+							<div class="modal fade" id="add" role="dialog"
 							style="display: none;" aria-hidden="true">
 							<div class="modal-dialog">
 
@@ -135,7 +114,7 @@
 											nouveau Magazine</h3>
 									</div>
 									<div class="modal-body">
-										<form th:action="@{/addMagazines}" method="post">
+										<form th:action="@{/addMagazines}" method="get">
 											<div class="form-group">
 												<div class="form-group">
 													<label class="control-label">Magazine</label> <input
@@ -149,13 +128,13 @@
 												</div>
 												<div class="form-group">
 													<label class="control-label">N° de série</label><input
-														name="numeroDeSerie" type="text" class="form-control" />
+														name="numeroDeSerie" type="number" class="form-control" />
 													<span class="has-error"></span>
 												</div>
 												<div class="form-group">
 													<label class="control-label">Date de sortie</label>
 													<div class="input-group date" data-provide="datepicker" id="date" data-date-format="dd/mm/yyyy">
-														<input type="text" class="form-control" /> <span
+														<input type="date" name="date" class="form-control" /> <span
 															class="input-group-addon"> <span
 															class="glyphicon glyphicon-calendar"></span>
 														</span>
@@ -198,40 +177,29 @@
 										<form action="#" method="post">
 											<div class="form-group">
 												<div class="form-group">
-													<label class="control-label">Magazine</label> <input
-														name="nom" type="text" class="form-control" /> <span
+													<label class="control-label">Nom</label> <input name="nom"
+														type="text" class="form-control" /> <span
 														class="has-error"></span>
 												</div>
 												<div class="form-group">
-													<label class="control-label">Titre</label> <input
-														name="titre" type="text" class="form-control" /> <span
-														class="has-error"></span>
-												</div>
-												<div class="form-group">
-													<label class="control-label">N° de série</label><input
-														name="numeroDeSerie" type="text" class="form-control" />
+													<label class="control-label">Thématique</label> <input
+														name="thematique" type="text" class="form-control" />
+													<!--<select class="form-control" name="thematique">
+                                                <option>...</option>
+                                                <option>test1</option>
+                                                <option>test2</option>
+                                            </select>-->
 													<span class="has-error"></span>
 												</div>
 												<div class="form-group">
-													<label class="control-label">Date de sortie</label>
-													<div class="input-group date" data-provide="datepicker" id="date" data-date-format="dd/mm/yyyy">
-														<input type="text" class="form-control" /> <span
-															class="input-group-addon"> <span
-															class="glyphicon glyphicon-calendar"></span>
-														</span>
-													</div>
+													<label class="control-label">Auteur</label> <input
+														name="auteur" type="text" class="form-control" /> <span
+														class="has-error"></span>
 												</div>
-												<div class="form-group">
-													<label class="control-label">Thème</label> <select
-														class="form-control" name="theme">
-														<option>theme1</option>
-														<option>test1</option>
-														<option>test2</option>
-													</select> <span class="has-error"></span>
-												</div>
+
 												<div class="form-group">
 													<button type="submit" class="btn btn-warning">
-														<span class="glyphicon glyphicon-ok"></span> Modifier
+														<span class="glyphicon glyphicon-edit"></span> Modifier
 													</button>
 													<button type="submit" class="btn btn-secondary">
 														Annuler</button>
