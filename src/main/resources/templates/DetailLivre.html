@@ -106,7 +106,7 @@
 					<h3 class="panel-title">Exemplaires</h3>
 				</div>
 				<div class="panel-body">
-					<form action="#" method="get">
+					<form th:action="@{/addExemplaireL}" method="get">
 						<input type="hidden" name="idLivre" th:value="${livre.idOeuvre}" />
 						<button type="submit" style="float: right;" id="addExemplaireBtn"
 							class="btn btn-success left-rounded" data-toggle="modal"

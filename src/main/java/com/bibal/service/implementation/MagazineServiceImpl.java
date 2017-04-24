@@ -80,21 +80,22 @@ public class MagazineServiceImpl implements MagazineService
 	}
 
 	@Override
-	public void addMagazine(String nom, String theme, String titre, String dateSortie, int numeroDeSerie)
+	public Magazine addMagazine(String nom, String theme, String titre, String dateSortie, int numeroDeSerie)
 	{
-
+		Magazine magazine = null;
 		try
 		{
-			magazineRepository.save(new Magazine(nom, theme, titre, formatter.parse(dateSortie), numeroDeSerie));
+			magazine = magazineRepository.save(new Magazine(nom, theme, titre, formatter.parse(dateSortie), numeroDeSerie));
 		}
 		catch (NumberFormatException e)
 		{
-			System.out.println("NumberFormatException :"+e.getMessage());
+			System.out.println("NumberFormatException :" + e.getMessage());
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
+		return magazine;
 	}
 
 	@Override

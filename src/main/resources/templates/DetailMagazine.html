@@ -41,7 +41,7 @@
 				<div class="panel-body">
 					<div class="row">
 						<h4 style="text-align: center">
-							<b><label th:text="${livre.nom}"></label></b>
+							<b><label th:text="${magazine.nom}"></label></b>
 						</h4>
 						<br />
 						<!-- we can add an image here 
@@ -56,19 +56,27 @@
 								<tbody>
 									<tr>
 										<td>Id:</td>
-										<td th:text="${livre.idOeuvre}"></td>
+										<td th:text="${magazine.idOeuvre}"></td>
 									</tr>
 									<tr>
 										<td>N° d'édition:</td>
-										<td th:text="${livre.ecrivain}"></td>
+										<td th:text="${magazine.numeroDeSerie}"></td>
 									</tr>
 									<tr>
 										<td>Thème:</td>
-										<td th:text="${livre.thematique}"></td>
+										<td th:text="${magazine.theme}"></td>
 									</tr>
 									<tr>
 										<td>Date de sortie</td>
+										<td th:text="${magazine.dateSortie}"></td>
+									</tr>
+									<tr>
+										<td>Nombre d'exemplaires</td>
 										<td th:text="${nbrExempl}"></td>
+									</tr>
+									<tr>
+										<td>Nombre d'exemplaires disponibles:</td>
+										<td th:text="${nbrExemplDispo}"></td>
 									</tr>
 								</tbody>
 							</table>
@@ -102,8 +110,8 @@
 					<h3 class="panel-title">Exemplaires</h3>
 				</div>
 				<div class="panel-body">
-					<form action="#" method="get">
-						<input type="hidden" name="idLivre" th:value="${livre.idOeuvre}" />
+					<form th:action="@{/addExemplaireM}" method="get">
+						<input type="hidden" name="idMagazine" th:value="${magazine.idOeuvre}" />
 						<button type="submit" style="float: right;" id="addExemplaireBtn"
 							class="btn btn-success left-rounded" data-toggle="modal"
 							data-target="#addExemplaire">
@@ -201,7 +209,7 @@
 								<div class="modal-body">
 									<form th:action="@{/addExemplaire}" method="get">
 										<input type="hidden" name="idLivre"
-											th:value="${livre.idOeuvre}" />
+											th:value="${magazine.idOeuvre}" />
 										<p>Voulez-vous vraiment ajouter un nouvel exemplaire ?</p>
 										<button type="submit" class="btn btn-success"
 											data-toggle="modal" data-target="#DetailLivre">
@@ -233,7 +241,7 @@
 										<div class="form-group">
 											<div class="form-group">
 												<label class="control-label">Oeuvre</label> <label
-													class="form-control" th:text="${livre.nom}"></label> <span
+													class="form-control" th:text="${magazine.nom}"></label> <span
 													class="has-error"></span>
 											</div>
 											<div class="form-group">
@@ -248,7 +256,7 @@
 													exemplaires.</small>
 											</div>
 											<input type="hidden" name="idExemplaireU" value="" /> <input
-												type="hidden" name="idLivre" th:value="${livre.idOeuvre}" />
+												type="hidden" name="idLivre" th:value="${magazine.idOeuvre}" />
 											<div class="form-group">
 												<button type="submit" class="btn btn-warning">
 													<span class="glyphicon glyphicon-edit"></span> Modifier
@@ -288,7 +296,7 @@
 												</select> <span class="has-error"></span>
 											</div>
 											<input type="hidden" name="idExemplaireR" value="" /> <input
-												type="hidden" name="idLivre" th:value="${livre.idOeuvre}" />
+												type="hidden" name="idLivre" th:value="${magazine.idOeuvre}" />
 											<div class="form-group">
 												<button type="submit" class="btn btn-success">
 													<span class="glyphicon glyphicon-ok"></span> Rendre
@@ -327,7 +335,7 @@
 											</div>
 											<input type="hidden" name="idExemplaireA" value="" /> <input
 												type="hidden" name="page" value="detailLivre" /><input
-												type="hidden" name="idLivre" th:value="${livre.idOeuvre}" />
+												type="hidden" name="idLivre" th:value="${magazine.idOeuvre}" />
 											<div class="form-group">
 												<button type="submit" class="btn btn-success">
 													<span class="glyphicon glyphicon-ok"></span> Emprunter
@@ -365,7 +373,7 @@
 												</select>
 											</div>
 											<input type="hidden" name="idLivre"
-												th:value="${livre.idOeuvre}" />
+												th:value="${magazine.idOeuvre}" />
 											<div class="form-group">
 												<button type="submit" class="btn btn-success">
 													<span class="glyphicon glyphicon-ok"></span> Resserver
@@ -389,23 +397,23 @@
 								<div class="modal-header" id="updateModalHeader">
 									<button type="button" class="close" data-dismiss="modal">&times;</button>
 									<h3 class="modal-title" style="text-align: center">
-										Modifier Le Livre numéro : <label th:text="${livre.idOeuvre}"></label>
+										Modifier Le Livre numéro : <label th:text="${magazine.idOeuvre}"></label>
 									</h3>
 								</div>
 								<div class="modal-body">
 									<form th:action="@{/updateLivre}" method="post">
 										<div class="form-group">
 											<input type="hidden" name="idLivre"
-												th:value="${livre.idOeuvre}" />
+												th:value="${magazine.idOeuvre}" />
 											<div class="form-group">
 												<label class="control-label">Nom</label> <input name="nom"
-													type="text" class="form-control" th:value="${livre.nom}" />
+													type="text" class="form-control" th:value="${magazine.nom}" />
 												<span class="has-error"></span>
 											</div>
 											<div class="form-group">
 												<label class="control-label">Thématique</label> <input
 													name="thematique" type="text" class="form-control"
-													th:value="${livre.thematique}" />
+													value="" />
 												<!--<select class="form-control" name="thematique">
                                                 <option>...</option>
                                                 <option>test1</option>
@@ -416,7 +424,7 @@
 											<div class="form-group">
 												<label class="control-label">Auteur</label> <input
 													name="auteur" type="text" class="form-control"
-													th:value="${livre.ecrivain}" /> <span class="has-error"></span>
+													value="" /> <span class="has-error"></span>
 											</div>
 											<div class="form-group">
 												<button type="submit" class="btn btn-warning">

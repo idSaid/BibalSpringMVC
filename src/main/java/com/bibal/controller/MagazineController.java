@@ -12,7 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.bibal.metier.Exemplaire;
 import com.bibal.metier.Magazine;
+import com.bibal.service.interfaces.ExemplaireService;
 import com.bibal.service.interfaces.MagazineService;
 
 
@@ -24,7 +26,10 @@ public class MagazineController
 {
 
 	@Autowired
-	MagazineService magazineService;
+	private ExemplaireService exemplaireService;
+
+	@Autowired
+	private MagazineService magazineService;
 
 	@RequestMapping("/Magazines")
 	public String Magazines(Model model)
@@ -35,9 +40,21 @@ public class MagazineController
 	}
 
 	@GetMapping("/addMagazines")
-	public String allMagazines(String nom, String titre, int numeroDeSerie, String date, String theme)
+	public String allMagazines(String nom, String titre, int numeroDeSerie, String date, String theme, int nbrExemplaire)
 	{
-		magazineService.addMagazine(nom, theme, titre, date, numeroDeSerie);
+		Magazine magazine = magazineService.addMagazine(nom, theme, titre, date, numeroDeSerie);
+
+		if (nbrExemplaire > 0)
+		{
+			for (int i = 0; i < nbrExemplaire; i++)
+			{
+				exemplaireService.addExemplaire(new Exemplaire("Bonne", magazine));
+			}
+		}
+		else
+		{
+			exemplaireService.addExemplaire(new Exemplaire("Bonne", magazine));
+		}
 		return "redirect:/Magazines";
 	}
 

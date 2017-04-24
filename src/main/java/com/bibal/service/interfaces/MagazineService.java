@@ -7,7 +7,7 @@ import com.bibal.metier.Magazine;
 
 public interface MagazineService {
 
-	public void addMagazine(String nom, String theme, String titre, String dateSortie, int numeroDeSerie);
+	public Magazine addMagazine(String nom, String theme, String titre, String dateSortie, int numeroDeSerie);
 	public List<Magazine> findAll();
 	public Magazine getById(Long id);
 	public List<Magazine> searchByName(String nom);

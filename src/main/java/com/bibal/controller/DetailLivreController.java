@@ -90,7 +90,7 @@ public class DetailLivreController {
 		return "redirect:/DetailLivre?idLivre=" + idLivre;
 	}
 
-	@RequestMapping(value = "/addExemplaire", method = RequestMethod.GET)
+	@RequestMapping(value = "/addExemplaireL", method = RequestMethod.GET)
 	public String addExemplaire(Long idLivre) {
 		Oeuvre oeuvre = livreService.getById(idLivre);
 		Exemplaire exemplaire = new Exemplaire(EtatExemplaire.Bonne.toString(), oeuvre);
