@@ -23,13 +23,11 @@ import com.bibal.service.interfaces.UsagerService;
 import com.bibal.util.EtatExemplaire;
 import com.bibal.util.EtatUsager;
 
-
 @Configuration
 @Controller
 @EnableAutoConfiguration
 @ComponentScan
-public class DetailMagazineController
-{
+public class DetailMagazineController {
 
 	@Autowired
 	private MagazineService magazineService;
@@ -39,15 +37,13 @@ public class DetailMagazineController
 
 	@Autowired
 	private UsagerService usagerService;
-	
+
 	@Autowired
 	private ExemplaireService exemplaireService;
 
 	@GetMapping("/DetailMagazine")
-	public String DetailMagazine(Model model, Long idMagazine)
-	{
-		try
-		{
+	public String DetailMagazine(Model model, Long idMagazine) {
+		try {
 			Magazine magazine = magazineService.getById(idMagazine);
 			model.addAttribute("magazine", magazine);
 			List<Exemplaire> exemplaires = magazine.getExemplairesBons();
@@ -58,31 +54,25 @@ public class DetailMagazineController
 			model.addAttribute("nbrExemplDispo", getNbrExemplaireDisponible(disponobilite));
 			model.addAttribute("dispo", getDiponibiliteByExemplaire(exemplaires));
 			model.addAttribute("usagers", usagers);
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		return "DetailMagazine";
 	}
 
-	private int getNbrExemplaireDisponible(String[] disponobilite)
-	{
+	private int getNbrExemplaireDisponible(String[] disponobilite) {
 		int cmpt = 0;
-		for (int i = 0; i < disponobilite.length; i++)
-		{
+		for (int i = 0; i < disponobilite.length; i++) {
 			if (disponobilite[i].equals("Disponible"))
 				cmpt++;
 		}
 		return cmpt;
 	}
 
-	private String[] getDiponibiliteByExemplaire(List<Exemplaire> exemplaires)
-	{
+	private String[] getDiponibiliteByExemplaire(List<Exemplaire> exemplaires) {
 		String[] disponobilite = new String[exemplaires.size()];
 		int size = 0;
-		for (Exemplaire exemplaire : exemplaires)
-		{
+		for (Exemplaire exemplaire : exemplaires) {
 			disponobilite[size] = empruntService.getDisponibilite(exemplaire.getIdExemplaire());
 			size++;
 		}
@@ -90,7 +80,13 @@ public class DetailMagazineController
 			System.out.println(disponobilite[i]);
 		return disponobilite;
 	}
-	
+
+	@RequestMapping(value = "/updateEtatExemplaireM", method = RequestMethod.GET)
+	public String updateEtatExemplaire(String etatExemplaire, Long idExemplaireU, Long idLivre) {
+		exemplaireService.updateEtatExemplaire(etatExemplaire, idExemplaireU);
+		return "redirect:/DetailMagazine?idMagazine=" + idLivre;
+	}
+
 	@RequestMapping(value = "/addExemplaireM", method = RequestMethod.GET)
 	public String addExemplaire(Long idMagazine) {
 		Oeuvre oeuvre = magazineService.getById(idMagazine);

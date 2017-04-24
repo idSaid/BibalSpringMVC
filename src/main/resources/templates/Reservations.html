@@ -119,7 +119,9 @@
 												<label class="col-md-6 control-label" for="lunch">Oeuvre
 													:</label> <select id="lunch" name="idLivre" class="selectpicker"
 													data-live-search="true" title="Choisir oeuvre ...">
-													<option th:each="o :${oeuvres}" th:value="${o.idOeuvre}"><label
+													<option th:each="o :${livres}" th:value="${o.idOeuvre}"><label
+															th:text="${o.nom}"></label></option>
+													<option th:each="o :${magazines}" th:value="${o.idOeuvre}"><label
 															th:text="${o.nom}"></label></option>
 												</select>
 											</div>

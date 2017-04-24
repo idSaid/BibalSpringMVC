@@ -41,6 +41,11 @@ public class ReservationServiceImpl implements ReservationService
 	{
 		return reservationRepository.getReservationsEnCours();
 	}
+
+	@Override
+	public Reservation searchByUsagerOeuvre(Long idUsager, Long idOeuvre) {
+		return reservationRepository.searchByUsagerOeuvre(idUsager, idOeuvre).get(0);
+	}
 	
 
 

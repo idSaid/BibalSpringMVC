@@ -106,14 +106,13 @@
 					<h3 class="panel-title">Exemplaires</h3>
 				</div>
 				<div class="panel-body">
-					<form th:action="@{/addExemplaireL}" method="get">
-						<input type="hidden" name="idLivre" th:value="${livre.idOeuvre}" />
-						<button type="submit" style="float: right;" id="addExemplaireBtn"
-							class="btn btn-success left-rounded" data-toggle="modal"
-							data-target="#addExemplaire">
-							<span class="glyphicon glyphicon-plus"></span> Nouveau exemplaire
-						</button>
-					</form>
+
+					<button type="button" style="float: right;" id="addExemplaireBtn"
+						class="btn btn-success left-rounded" data-toggle="modal"
+						data-target="#addExemplaire">
+						<span class="glyphicon glyphicon-plus"></span> Nouveau exemplaire
+					</button>
+
 
 					<div class="col-sm-24" align="center" id="exemplairedatatableDiv">
 						<table id="exemplairedatatable"
@@ -203,7 +202,7 @@
 										nouveau exemplaire</h3>
 								</div>
 								<div class="modal-body">
-									<form th:action="@{/addExemplaire}" method="get">
+									<form th:action="@{/addExemplaireL}" method="get">
 										<input type="hidden" name="idLivre"
 											th:value="${livre.idOeuvre}" />
 										<p>Voulez-vous vraiment ajouter un nouvel exemplaire ?</p>
@@ -233,7 +232,7 @@
 									</h3>
 								</div>
 								<div class="modal-body">
-									<form th:action="@{/updateEtatExemplaire}" method="get">
+									<form th:action="@{/updateEtatExemplaireL}" method="get">
 										<div class="form-group">
 											<div class="form-group">
 												<label class="control-label">Oeuvre</label> <label
@@ -281,7 +280,7 @@
 									</h3>
 								</div>
 								<div class="modal-body">
-									<form th:action="@{/rendre}" method="get">
+									<form th:action="@{/rendreL}" method="get">
 										<div class="form-group">
 											<div class="form-group">
 												<label class="control-label">Etat de l'exemplaire</label> <select
@@ -358,7 +357,7 @@
 										Reservation</h3>
 								</div>
 								<div class="modal-body">
-									<form th:action="@{/addReservation}" method="get">
+									<form th:action="@{/addReservationL}" method="get">
 										<div class="form-group">
 											<div class="form-group">
 												<label class="col-md-6 control-label" for="lunch">Usager

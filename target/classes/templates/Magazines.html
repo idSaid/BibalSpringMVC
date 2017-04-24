@@ -27,7 +27,7 @@
 <script type="text/javascript">
 	$(function() {
 		$('#date').datetimepicker({
-		    format: 'dd/mm/yyyy'
+			format : 'dd/mm/yyyy'
 		});
 	});
 </script>
@@ -102,7 +102,7 @@
 						</table>
 
 
-							<div class="modal fade" id="add" role="dialog"
+						<div class="modal fade" id="add" role="dialog"
 							style="display: none;" aria-hidden="true">
 							<div class="modal-dialog">
 
@@ -133,7 +133,8 @@
 												</div>
 												<div class="form-group">
 													<label class="control-label">Date de sortie</label>
-													<div class="input-group date" data-provide="datepicker" id="date" data-date-format="dd/mm/yyyy">
+													<div class="input-group date" data-provide="datepicker"
+														id="date" data-date-format="dd/mm/yyyy">
 														<input type="date" name="date" class="form-control" /> <span
 															class="input-group-addon"> <span
 															class="glyphicon glyphicon-calendar"></span>
@@ -141,12 +142,9 @@
 													</div>
 												</div>
 												<div class="form-group">
-													<label class="control-label">Thème</label> <select
-														class="form-control" name="theme">
-														<option>theme1</option>
-														<option>test1</option>
-														<option>test2</option>
-													</select> <span class="has-error"></span>
+													<label class="control-label">Thème</label><input
+														name="theme" type="text" class="form-control" /> <span
+														class="has-error"></span>
 												</div>
 												<div class="form-group">
 													<label class="control-label">Nombre d'exemplaire</label> <input

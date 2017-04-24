@@ -13,7 +13,6 @@ public interface MagazineService {
 	public List<Magazine> searchByName(String nom);
 	public List<Magazine> searchByAuthor(String author);
 	public List<Magazine> searchByThematique(String thematique);
-	public Magazine update(Long id, String nom,String theme, String titre, String dateSortie, String numeroDeSerie);
-	public Magazine updateHorsSerie(Long id, String nom,String theme, String titre, String dateSortie);
+	public void update(Long id, String nom,String theme, String titre, String dateSortie, int numeroDeSerie);
 	
 }
