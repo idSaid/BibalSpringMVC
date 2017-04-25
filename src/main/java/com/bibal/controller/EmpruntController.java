@@ -53,9 +53,9 @@ public class EmpruntController {
 	@RequestMapping(value = "/addEmprunt", method = RequestMethod.GET)
 	public String addEmprunt(Long idExemplaireA, Long idUsager, String page, Long idLivre) {
 		empruntService.addEmprunt(idUsager, idExemplaireA);
-		Reservation reservation = reservationService.searchByUsagerOeuvre(idUsager, idLivre);
-		if (reservation != null) {
-			reservationService.annulerReservation(reservation.getIdReservation());
+		List<Reservation> reservation = reservationService.searchByUsagerOeuvre(idUsager, idLivre);
+		if (!reservation.isEmpty()) {
+			reservationService.annulerReservation(reservation.get(0).getIdReservation());
 		}
 
 		if (page.equals("detailLivre")) {

@@ -17,5 +17,5 @@ public interface ReservationService
 
 	public List<Reservation> findAllReservationEnCours();
 	
-	public Reservation searchByUsagerOeuvre(Long idUsager, Long idOeuvre);
+	public List<Reservation> searchByUsagerOeuvre(Long idUsager, Long idOeuvre);
 }
